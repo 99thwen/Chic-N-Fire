@@ -34,13 +34,7 @@ const [location, setLocation] =
     className="w-auto h-auto"
   />
 
-  {location && (
-    <p className="text-xs text-zinc-500 mt-1">
-      {location.deliveryType === "delivery"
-        ? `${location.area}, ${location.city}`
-        : location.area}
-    </p>
-  )}
+  
 </div>
 
             <div className="hidden lg:flex items-center gap-10 text-zinc-700 font-semibold">

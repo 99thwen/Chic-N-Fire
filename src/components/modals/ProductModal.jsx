@@ -74,11 +74,10 @@ useEffect(() => {
   }, [item]);
 
   if (!item) return null;
-
 const variationPrice =
-  Number(
-    selectedVariation?.split("Rs ")[1]
-  ) || item.price;
+  selectedVariation?.price ||
+  item.price ||
+  0;
 
 const unitPrice = variationPrice;
 
@@ -127,7 +126,8 @@ return (
             </div>
 
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-100 text-zinc-700 text-sm font-semibold whitespace-nowrap">
-  {selectedVariation}
+   {selectedVariation?.name || "Select"}
+
 </span>
           </div>
 
@@ -155,9 +155,9 @@ return (
 
         </div>
 
-        <span>
-          {selectedVariation || "Select"}
-        </span>
+        <span className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-100 text-zinc-700 text-sm font-semibold whitespace-nowrap">
+  {selectedVariation?.name || "Select"}
+</span>
 
       </button>
 
@@ -167,7 +167,7 @@ return (
           {item.variations.map(
             (variation) => (
               <button
-                key={variation}
+                key={variation.name}
                 onClick={() => {
                   setSelectedVariation(
                     variation
@@ -175,13 +175,12 @@ return (
                   setShowVariations(false);
                 }}
                 className={`w-full text-left px-4 py-4 hover:bg-zinc-50 ${
-                  selectedVariation ===
-                  variation
+                  selectedVariation?.name === variation.name
                     ? "bg-zinc-100 font-semibold"
                     : ""
                 }`}
               >
-                {variation}
+                {variation.name} - Rs {variation.price}
               </button>
             )
           )}

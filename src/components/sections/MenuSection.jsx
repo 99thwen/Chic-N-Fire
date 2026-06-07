@@ -128,9 +128,9 @@ useEffect(() => {
 
 if (section) {
   const y =
-    section.getBoundingClientRect().top +
-    window.pageYOffset -
-    140;
+  section.getBoundingClientRect().top +
+  window.pageYOffset -
+  220;
 
   window.scrollTo({
     top: y,

@@ -12,15 +12,11 @@ import WhatsAppButton from "../components/common/WhatsAppButton";
 
 export default function Home() {
   const [locationOpen, setLocationOpen] =
-    useState(true);
+  useState(false);
 
   return (
     <>
-    <LocationModal
-      open={locationOpen}
-      setOpen={setLocationOpen}
-    />
-
+    
     
     
         <Navbar />

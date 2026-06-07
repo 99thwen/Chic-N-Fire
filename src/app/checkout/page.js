@@ -51,7 +51,7 @@ const [formData, setFormData] = useState({
 
       <div className="min-h-screen bg-zinc-100 text-zinc-900 flex items-center justify-center p-6">
 
-        <div className="bg-white border border-zinc-200 rounded-[30px] p-10 max-w-xl w-full text-center shadow-sm">
+        <div className="bg-white border border-zinc-200 rounded-[30px] p-5 md:p-8 shadow-sm h-fit lg:sticky lg:top-24">
 
           <h1 className="text-5xl font-black text-[#FFD400]">
             Order Placed
@@ -151,8 +151,7 @@ const savedLocation =
   };
 return (
   <>
-    <div className="min-h-screen bg-zinc-100 py-16 px-4">
-
+    <div className="min-h-screen bg-zinc-100 py-16 px-4 overflow-x-hidden">
       <div className="max-w-7xl mx-auto mb-6">
         <div className="text-sm text-zinc-500 flex items-center gap-2">
           <a href="/" className="hover:text-black">
@@ -179,7 +178,7 @@ return (
               Customer Information
             </h3>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
               <input
                 type="text"
@@ -187,7 +186,7 @@ return (
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
               />
 
               <input
@@ -197,7 +196,7 @@ return (
                 maxLength={11}
                 value={formData.phone}
                 onChange={handleChange}
-                className="border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
               />
 
               <input
@@ -206,7 +205,7 @@ return (
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleChange}
-                className="border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 outline-none focus:border-[#FFD400]"
               />
 
             </div>

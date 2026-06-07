@@ -1,17 +1,50 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 const cityAreas = {
   Peshawar: [
-    "Hayatabad",
+    "Hayatabad Phase 1",
+    "Hayatabad Phase 2",
+    "Hayatabad Phase 3",
+    "Hayatabad Phase 4",
+    "Hayatabad Phase 5",
+    "Hayatabad Phase 6",
+    "Hayatabad Phase 7",
     "University Town",
+    "Town",
+    "Tehkal",
+    "Tehkal Bala",
+    "Tehkal Payan",
     "Saddar",
+    "Cantt",
+    "DHA",
     "Ring Road",
     "Warsak Road",
     "Board Bazaar",
+    "Karkhano Market",
+    "GT Road",
+    "Kohat Road",
+    "Dalazak Road",
+    "Faqirabad",
+    "Gulbahar",
+    "Hashtnagri",
+    "Nishtarabad",
+    "Yakatoot",
+    "Chowk Yadgar",
+    "Sufaid Dheri",
+    "Arbab Road",
+    "Askari 2",
+    "Askari 6",
+    "Bilal Town",
+    "Ashrafia Colony",
+    "Badezai",
+    "Behari Colony",
+    "Canal Road",
+    "Nasir Bagh Road",
+    "Jamrud Road",
   ],
 };
+
 
 export default function LocationModal({
   open,
@@ -28,10 +61,16 @@ export default function LocationModal({
 
   const [detectingLocation, setDetectingLocation] =
     useState(false);
+const [locationDetected, setLocationDetected] =
+  useState(false);
+  const [searchArea, setSearchArea] =
+  useState("");
 
+const [showAreas, setShowAreas] =
+  useState(false);
   const pickupBranches = [
     "Chic n Fire - Hayatabad",
-    "Chic n Fire - DHA",
+    
   ];
 
   useEffect(() => {
@@ -44,20 +83,24 @@ export default function LocationModal({
     };
   }, [open]);
 
-  const handleLocation = () => {
-    setDetectingLocation(true);
+const handleLocation = () => {
+  setDetectingLocation(true);
 
-    navigator.geolocation.getCurrentPosition(
-      () => {
-        setTimeout(() => {
-          setDetectingLocation(false);
-        }, 800);
-      },
-      () => {
-        setDetectingLocation(false);
-      }
-    );
-  };
+  navigator.geolocation.getCurrentPosition(
+    () => {
+      setDetectingLocation(false);
+      setLocationDetected(true);
+
+      // temporary auto-select
+     setArea("Ring Road");
+setSearchArea("Ring Road");
+    },
+    () => {
+      setDetectingLocation(false);
+      setLocationDetected(false);
+    }
+  );
+};
 
  const handleContinue = () => {
   if (!area) return;
@@ -75,7 +118,12 @@ export default function LocationModal({
 };
 
   if (!open) return null;
-
+const filteredAreas =
+  cityAreas[city]?.filter((item) =>
+    item
+      .toLowerCase()
+      .includes(searchArea.toLowerCase())
+  ) || [];
   return (
     <>
       <div className="fixed inset-0 z-[9998] bg-black/25 backdrop-blur-[5px]" />
@@ -91,7 +139,7 @@ export default function LocationModal({
     background: "rgba(0,0,0,0.2)",
   }}
 >
-        <div className="relative w-full max-w-[360px] md:max-w-[475px] rounded-3xl bg-white">
+       <div className="relative w-[92%] max-w-[340px] md:max-w-[475px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white">
           
 
           <button
@@ -101,13 +149,13 @@ export default function LocationModal({
             ✕
           </button>
 
-          <div className="px-4 py-5 md:px-7 md:py-6">
+          <div className="px-4 py-4 md:px-7 md:py-5">
 
             <div className="flex justify-center">
               <img
                 src="/logo.webp"
                 alt="Chic n Fire"
-                className="h-29 w-auto object-contain"
+               className="h-20 w-auto object-contain"
                 
                 
               />
@@ -160,8 +208,11 @@ export default function LocationModal({
                 <div className="mt-3 flex justify-center">
                   <button
                     onClick={handleLocation}
-                    className="flex h-9 items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-5 text-[13px] font-medium text-zinc-700 transition-all hover:bg-zinc-100"
-                  >
+                    className={`flex h-9 items-center gap-2 rounded-full px-5 text-[13px] font-medium transition-all ${
+  locationDetected
+    ? "bg-green-100 text-green-700 border border-green-300"
+    : "border border-zinc-200 bg-zinc-50 text-zinc-700 hover:bg-zinc-100"
+}`}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-4 w-4"
@@ -183,55 +234,84 @@ export default function LocationModal({
                       />
                     </svg>
 
-                    {detectingLocation
-                      ? "Detecting..."
-                      : "Use Current Location"}
+                    {
+  detectingLocation
+    ? "Detecting..."
+    : locationDetected
+    ? "Location Detected ✓"
+    : "Use Current Location"
+}
                   </button>
-                </div>
-
-                <div className="mt-4">
-                  <label className="mb-2 block text-[13px] font-semibold text-zinc-700">
-                    Select City / Region
-                  </label>
-
-                  <select
-                    value={city}
-                    onChange={(e) => {
-                      setCity(e.target.value);
-                      setArea("");
-                    }}
-                    className="h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-[15px] outline-none focus:border-orange-500"
-                  >
-                    <option>Peshawar</option>
-                  </select>
                 </div>
 
                 <div className="mt-3">
                   <label className="mb-2 block text-[13px] font-semibold text-zinc-700">
-                    Select Area / Sub Region
-                  </label>
+  Select City / Region
+</label>
 
-                  <select
-                    value={area}
-                    onChange={(e) =>
-                      setArea(e.target.value)
-                    }
-                    className="h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-[15px] outline-none focus:border-orange-500"
-                  >
-                    <option value="">
-                      Select Area / Sub Region
-                    </option>
+<select
+  value={city}
+  onChange={(e) => {
+    setCity(e.target.value);
+    setArea("");
+    setSearchArea("");
+  }}
+  className="mb-3 h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-zinc-900 text-[15px] outline-none focus:border-orange-500"
+>
+  <option>Peshawar</option>
+</select>
 
-                    {cityAreas[city]?.map((item) => (
-                      <option
-                        key={item}
-                        value={item}
-                      >
-                        {item}
-                      </option>
-                    ))}
-                  </select>
+<label className="mb-2 block text-[13px] font-semibold text-zinc-700">
+  Search Area / Sub Region
+</label>
+
+<div className="relative">
+
+  <input
+    type="text"
+    placeholder="Search Area / Sub Region"
+    value={searchArea}
+    onChange={(e) => {
+      setSearchArea(e.target.value);
+      setShowAreas(true);
+    }}
+    onFocus={() =>
+      setShowAreas(true)
+    }
+    className="h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-zinc-900 text-[15px] outline-none focus:border-orange-500"
+  />
+
+  {showAreas && (
+    <div className="absolute z-50 mt-1 w-full max-h-60 overflow-y-auto rounded-xl border border-zinc-200 bg-white shadow-lg">
+
+      {filteredAreas.map((item) => (
+
+        <button
+          key={item}
+          type="button"
+          onClick={() => {
+            setArea(item);
+            setSearchArea(item);
+            setShowAreas(false);
+          }}
+          className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-orange-50"
+        >
+          <span>{item}</span>
+
+          <span className="text-xs text-zinc-400">
+            ~30 min
+          </span>
+
+        </button>
+
+      ))}
+
+    </div>
+  )}
+
+</div>
                 </div>
+
               </>
             )}
 

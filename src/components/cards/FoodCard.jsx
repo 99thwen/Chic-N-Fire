@@ -13,7 +13,10 @@ export default function FoodCard({
     toggleFavorite,
     isFavorite,
   } = useFavorites();
-
+const displayPrice =
+  product.price ||
+  product.variations?.[0]?.price ||
+  0;
  return (
   <div className="bg-white rounded-2xl border border-zinc-200 flex overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200">
 
@@ -48,7 +51,7 @@ export default function FoodCard({
         <div>
 
           <p className="inline-block bg-black text-white px-2.5 md:px-3 py-1 rounded-lg font-bold text-xs md:text-sm">
-            Rs {product.price}
+           Rs {displayPrice}
           </p>
 
           <div className="mt-2 md:mt-3 flex items-center justify-between">
