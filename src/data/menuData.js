@@ -353,7 +353,7 @@ drink2Variations: drinkFlavors,
   description: "Signature chicken burger loaded with fresh ingredients and sauces.",
   price: 680,
   image: "/foods/specialburger.webp",
-  variations: ["Regular"],
+  
 
 },
 
@@ -366,9 +366,8 @@ drink2Variations: drinkFlavors,
   title: "Stuffed Cheese Burger", 
   description: "Chicken burger filled with rich melted cheese.",
   price: 680,
-  image: "/foods/specialburger.webp",
-  variations: ["Regular"],
-
+  image: "/foods/cheeseburger.webp",
+  
 },
 
 {
@@ -378,8 +377,8 @@ drink2Variations: drinkFlavors,
   title: "Chicken Steak Burger",
     description: "Grilled chicken steak burger served with fresh toppings.",
   price: 680,
-  image: "/foods/chickenburger.webp",
-  variations: ["Regular"],
+  image: "/foods/chsteak.webp",
+  
 
 },
 
@@ -389,8 +388,8 @@ drink2Variations: drinkFlavors,
   title: "Tower Burger", 
     description: "Crispy chicken fillet stacked with fresh lettuce and sauce.",
   price: 680,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/tower.webp",
+  
 },
 
 
@@ -401,8 +400,8 @@ drink2Variations: drinkFlavors,
   title: "Beef Stuffed Cheese Burger", 
     description: "Juicy beef burger stuffed with melted cheese.",
   price: 680,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/beefstuffed.webp",
+  
 
 },
 
@@ -414,8 +413,8 @@ drink2Variations: drinkFlavors,
   title: "Tikka Stuffed Cheese Burger", 
     description: "Tikka-flavored chicken burger filled with creamy cheese.",
   price: 680,
-  image: "/foods/specialburger.webp",
-  variations: ["Regular"],
+  image: "/foods/tikkastuf.webp",
+  
 },
 
 {
@@ -425,7 +424,7 @@ drink2Variations: drinkFlavors,
     description: "Grilled chicken burger stuffed with rich melted cheese.",
   price: 650,
   image: "/foods/chickenburger.webp",
-  variations: ["Regular"],
+ 
 },
 
 {
@@ -435,7 +434,7 @@ drink2Variations: drinkFlavors,
     description: "Crispy chicken burger topped with melted cheese.",
   price: 650,
   image: "/foods/specialburger.webp",
-  variations: ["Regular"],
+  
 },
 
 
@@ -446,7 +445,7 @@ drink2Variations: drinkFlavors,
   description: "Classic chicken burger with signature Firestone flavor.",
   price: 650,
   image: "/foods/burger.webp",
-  variations: ["Regular"],
+ 
 },
 
 
@@ -457,8 +456,8 @@ drink2Variations: drinkFlavors,
   title: "Mighty Zinger Burger",
   description: "Extra-large zinger burger loaded with cheese.",
   price: 650,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/mightyzinger.webp",
+
 },
 
 
@@ -469,8 +468,8 @@ drink2Variations: drinkFlavors,
   title: "Fish Burger",
   description: "Crispy fish fillet burger served with signature sauce.",
   price: 650,
-  image: "/foods/chickenburger.webp",
-  variations: ["Regular"],
+  image: "/foods/fishburger.webp",
+ 
 },
 
 
@@ -481,8 +480,8 @@ drink2Variations: drinkFlavors,
   title: "Steam Zinger Burger",
   description: "Steamed zinger burger with tender chicken and fresh toppings.",
   price: 650,
-  image: "/foods/chickenburger.webp",
-  variations: ["Regular"],
+  image: "/foods/steamzinger.webp",
+  
 },
 
 
@@ -494,7 +493,7 @@ drink2Variations: drinkFlavors,
   description: "Crispy zinger fillet burger served with fresh lettuce and sauce.",
   price: 650,
   image: "/foods/burger.webp",
-  variations: ["Regular"],
+
 },
 
 
@@ -505,8 +504,8 @@ drink2Variations: drinkFlavors,
   title: "Jalapeno Burger",
   description: "Chicken burger topped with spicy jalapenos and sauce.",
   price: 650,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/jalapeno.webp",
+
 },
 
 
@@ -517,8 +516,8 @@ drink2Variations: drinkFlavors,
   title: "Chicken Burger",
   description: "Classic chicken burger prepared fresh and served hot.",
   price: 650,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/chickenburger.webp",
+ 
 },
 
 
@@ -529,8 +528,8 @@ drink2Variations: drinkFlavors,
   title: "Crispy Burger",
   description: "Crispy chicken burger with fresh vegetables and sauce.",
   price: 650,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/crispy.webp",
+
 },
 
 
@@ -542,7 +541,7 @@ drink2Variations: drinkFlavors,
   description: "Chicken tikka burger packed with traditional flavor.",
   price: 650,
   image: "/foods/burger.webp",
-  variations: ["Regular"],
+ 
 },
 
 
@@ -553,8 +552,8 @@ drink2Variations: drinkFlavors,
   title: "Chicken Grill Burger",
   description: "Grilled chicken burger served with fresh toppings and sauce.",
   price: 650,
-  image: "/foods/burger.webp",
-  variations: ["Regular"],
+  image: "/foods/chgrillburger.webp.webp",
+ 
 },
 
 
@@ -585,7 +584,7 @@ drink2Variations: drinkFlavors,
   title: "Chic n Fire Kabab Pizza",
   description: "Spicy kabab slices, melted cheese, tomato and capsicum on a fresh baked crust.",
   price: 850,
-  image: "/foods/pizza7.webp",
+  image: "/foods/kababp.webp",
   variations: ["Small - Rs 850", "Medium - Rs 1450", "Large - Rs 1750", "XL - Rs 2350"],
 },
 {
@@ -594,7 +593,7 @@ drink2Variations: drinkFlavors,
   title: "Chic n Fire Crown Crust",
   description: "Double chicken, double cheese, creamy white sauce and mayo drizzle.",
   price: 790,
-  image: "/foods/pizza3.webp",
+  image: "/foods/crowncrust.webp",
   variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
 },
 {
@@ -630,7 +629,7 @@ drink2Variations: drinkFlavors,
   title: "Special Fish Pizza",
   description: "Tender fish chunks, mushrooms, olives, capsicum and rich melted cheese.",
   price: 790,
-  image: "/foods/pizza1=3.webp",
+  image: "/foods/fishp.webp",
   variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
 },
 {
@@ -665,7 +664,7 @@ drink2Variations: drinkFlavors,
   title: "Chic n Fire Deep Dish",
    description: "Beef pepperoni, sausages, extra cheese and black olives on a loaded crust.",
   price: 790,
-  image: "/foods/pizza7.webp",
+  image: "/foods/deepdishp.webp",
   variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
 },
 {
@@ -701,7 +700,7 @@ drink2Variations: drinkFlavors,
   title: "Chicken Cheese",
   description: "A simple combination of tender chicken, melted cheese and signature sauce.",
   price: 790,
-  image: "/foods/pizza7.webp",
+  image: "/foods/chickencheesep.webp",
   variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
 },
 {
@@ -728,7 +727,7 @@ drink2Variations: drinkFlavors,
   title: "Chic n Fire Creamy Melt",
    description: "Double chicken, cream cheese, capsicum and special sauce baked to perfection.",
   price: 790,
-  image: "/foods/pizza2=6.webp",
+  image: "/foods/creamymelt.webp",
   variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
 },
 {
@@ -752,7 +751,7 @@ drink2Variations: drinkFlavors,
   description: "Aromatic Arabian-style rice seasoned with signature spices.",
   price: 300,
   image: "/foods/arabianrice.webp",
-  variations: ["Regular"],
+ 
 },
 {
   id: 71,
@@ -760,17 +759,17 @@ drink2Variations: drinkFlavors,
   title: "Rice & Spice (3 Wings)",
   description: "Flavorful rice served with 3 crispy chicken wings.",
   price: 550,
-  image: "/foods/wings.webp",
-  variations: ["Regular"],
+  image: "/foods/rice1.webp",
+
 },
 {
   id: 72,
   category: "Starters",
   title: "Rice & Spice (3 Fish Pieces)",
-  description: "Seasoned Arabian rice served with 3 crispy fish pieces.",
+  description: "Seasoned rice served with 3 crispy fish pieces.",
   price: 550,
-  image: "/foods/wings.webp",
-  variations: ["Regular"],
+  image: "/foods/rice2.webp",
+
 },
 {
   id: 73,
@@ -779,7 +778,7 @@ drink2Variations: drinkFlavors,
   description: "A creamy and refreshing chaat topped with flavorful ingredients.",
   price: 300,
   image: "/foods/creamchaat.webp",
-  variations: ["Regular"],
+
 },
 {
   id: 74,
@@ -788,7 +787,7 @@ drink2Variations: drinkFlavors,
   description: "Soft paratha wrapped around your choice of delicious filling.",
   price: 550,
   image: "/foods/paratharoll.webp",
-  variations: ["Regular"],
+
 },
 {
   id: 75,
@@ -797,7 +796,7 @@ drink2Variations: drinkFlavors,
   description: "Tender Behari-style chicken wrapped in a freshly made paratha.",
   price: 580,
   image: "/foods/behari.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 76,
@@ -806,7 +805,7 @@ drink2Variations: drinkFlavors,
   description: "Crispy chicken chunks seasoned and fried until golden.",
   price: 500,
   image: "/foods/chunks.webp",
-  variations: ["Regular"],
+
 },
 {
   id: 77,
@@ -815,7 +814,7 @@ drink2Variations: drinkFlavors,
   description: "Tender fish chunks coated in crispy seasoned crumbs.",
   price: 740,
   image: "/foods/chunks.webp",
-  variations: ["Regular"],
+ 
 },
 {
   id: 78,
@@ -824,7 +823,7 @@ drink2Variations: drinkFlavors,
   description: "Tender fish chunks coated in crispy seasoned crumbs.",
   price: 830,
   image: "/foods/pizzafries.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 79,
@@ -833,7 +832,7 @@ drink2Variations: drinkFlavors,
   description: "Freshly prepared roll packed with flavorful fillings and sauces.",
   price: 550,
   image: "/foods/roll.webp",
-  variations: ["Regular"],
+
 },
 {
   id: 80,
@@ -841,8 +840,8 @@ drink2Variations: drinkFlavors,
   title: "Fish Delight (5 Pieces)",
   description: "Five crispy fish pieces served hot and freshly prepared.",
   price: 740,
-  image: "/foods/wings.webp",
-  variations: ["Regular"],
+  image: "/foods/fish.webp",
+
 },
 {
   id: 81,
@@ -850,8 +849,8 @@ drink2Variations: drinkFlavors,
   title: "French Bread",
   description: "Freshly baked bread topped with cheese and signature seasonings.",
   price: 550,
-  image: "/foods/bread.webp",
-  variations: ["Regular"],
+  image: "/foods/roll.webp",
+
 },
 {
   id: 82,
@@ -859,8 +858,8 @@ drink2Variations: drinkFlavors,
   title: "Fish & Chips",
   description: "Crispy fish fillets served with golden fries and dipping sauce.",
   price: 850,
-  image: "/foods/wings.webp",
-  variations: ["Regular"],
+  image: "/foods/fishchips.webp",
+
 },
 {
   id: 83,
@@ -868,7 +867,7 @@ drink2Variations: drinkFlavors,
   title: "Fries",
   description: "Golden crispy fries seasoned and served fresh.",
   price: 250,
-  image: "/foods/fishchips.webp",
+  image: "/foods/fries.webp",
  
 },
 {
@@ -887,7 +886,7 @@ drink2Variations: drinkFlavors,
   description: "Fresh tortilla wraps filled with your favorite flavors.",
   price: 550,
   image: "/foods/wraps.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 86,
@@ -932,7 +931,8 @@ drink2Variations: drinkFlavors,
    description: "Tender oven-baked chicken seasoned with signature spices.",
   price: 400,
   image: "/foods/wings.webp",
-  variations: ["5 Pieces", "10 Pieces"],
+  variations: ["5 Pieces", "10 Pieces" ],
+  
 },
 {
   id: 91,
@@ -941,7 +941,7 @@ drink2Variations: drinkFlavors,
   description: "Crispy fried chicken prepared fresh and served hot.",
   price: 260,
   image: "/foods/chickenpiece.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 92,
@@ -949,8 +949,8 @@ drink2Variations: drinkFlavors,
   title: "Steam Chicken Piece",
    description: "Tender steamed chicken prepared with light seasoning.",
   price: 260,
-  image: "/foods/wings.webp",
-  variations: ["Regular"],
+  image: "/foods/steam..webp",
+ 
 },
 {
   id: 93,
@@ -958,8 +958,8 @@ drink2Variations: drinkFlavors,
   title: "Shawarma",
    description: "Soft wrap filled with juicy chicken and signature sauces.",
   price: 260,
-  image: "/foods/fries.webp",
-  variations: ["Regular"],
+  image: "/foods/Shawarma.webp",
+  
 },
 {
   id: 94,
@@ -976,7 +976,7 @@ drink2Variations: drinkFlavors,
   title: "Mayo Nuggets",
   description: "Crispy nuggets served with creamy mayo flavor.",
   price: 400,
-  image: "/foods/wings.webp",
+  image: "/foods/mayonuggets.webp",
   variations: ["6 Pieces", "12 Pieces"],
 },
 {
@@ -995,7 +995,7 @@ drink2Variations: drinkFlavors,
   description: "Soft buns stuffed with chicken and melted cheese.",
   price: 550,
   image: "/foods/buns2.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 98,
@@ -1004,7 +1004,7 @@ drink2Variations: drinkFlavors,
   description: "Soft buns filled with seasoned beef and melted cheese.",
   price: 650,
   image: "/foods/buns1.webp",
-  variations: ["Regular"],
+ 
 },
 {
   id: 99,
@@ -1012,44 +1012,43 @@ drink2Variations: drinkFlavors,
   title: "Italian Lasagna",
   price: 850, // replace later if needed
   image: "/foods/pizza2.webp",
-  variations: ["Regular"],
+  
 },
 {
   id: 100,
   category: "Drinks",
   title: "Soft Drink",
-  description: "Refreshing chilled beverages to complement your meal.",
-  price: 120,
   image: "/foods/drink.webp",
-  variations: ["Can", "500ml", "1.5L"],
+
+  drinkVariations: drinkFlavors,
+
+  variations: [
+    { name: "Can", price: 120 },
+    { name: "500ml", price: 150 },
+    { name: "1.5L", price: 250 },
+  ],
 },
 {
   id: 101,
   category: "Drinks",
   title: "Water",
-  description: "Refreshing chilled water.",
-  price: 120,
-  image: "/foods/drink.webp",
-  variations: ["Can", "500ml", "1.5L"],
+  description: "Pure chilled mineral water.",
+  image: "/foods/water.webp",
+  variations: [
+    { name: "500ml", price: 60 },
+    { name: "1.5L", price: 120 },
+  ],
 },
 {
   id: 102,
   category: "Drinks",
   title: "Sting",
-  description: "Refreshing chilled beverages to complement your meal.",
-  price: 120,
-  image: "/foods/drink.webp",
-  variations: ["Can", "500ml", "1.5L"],
+  description: "Energy drink served chilled.",
+  image: "/foods/sting.webp",
+  variations: [
+    { name: "Can", price: 120 },
+    { name: "500ml", price: 180 },
+  ],
 },
 
-{
-  id: 103,
-  category: "Pizza",
-  title: "Italian Lasagna",
-  description: "Layers of chicken, cheese, herbs and sauce baked until perfectly golden.",
-  price: 790,
-  image: "/foods/pizza7.webp",
-  variations: ["Small - Rs 790", "Medium - Rs 1390", "Large - Rs 1690", "XL - Rs 2290"],
-
-},
 ];

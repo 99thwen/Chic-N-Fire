@@ -9,7 +9,7 @@ export default function ProductModal({
   item,
   onClose,
 }) {
-const [selectedVariation, setSelectedVariation] = useState("");
+const [selectedVariation, setSelectedVariation] = useState(null);
 const [quantity, setQuantity] = useState(1);
 const [selectedPizzaFlavor, setSelectedPizzaFlavor] = useState("");
 const [selectedDrinkFlavor, setSelectedDrinkFlavor] = useState("");
@@ -40,7 +40,9 @@ const [showPizza1Flavors, setShowPizza1Flavors] =
 
 const [showPizza2Flavors, setShowPizza2Flavors] =
   useState(false);
-  
+  const [showVariations, setShowVariations] =
+  useState(false);
+
     const { addToCart } = useCart();
 
 
@@ -75,17 +77,13 @@ useEffect(() => {
 
 const variationPrice =
   Number(
-    selectedVariation
-      ?.split("Rs ")[1]
+    selectedVariation?.split("Rs ")[1]
   ) || item.price;
 
+const unitPrice = variationPrice;
+
 const totalPrice =
-  variationPrice * quantity;
-
-const unitPrice =
-  variationPrice;
-
-
+  unitPrice * quantity;
   
 return (
   <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
@@ -134,30 +132,62 @@ return (
           </div>
 
           <div className="mt-10">
-{item.variations?.length > 0 && (
-  <div className="mt-10">
+{item.variations && (
+  <div className="mt-6">
 
-    <h3 className="text-zinc-900 text-xl font-bold mb-4">
-      Select Variation
-    </h3>
+    <div className="border border-zinc-200 rounded-2xl overflow-hidden">
 
-    <div className="flex flex-wrap gap-4">
+      <button
+        onClick={() =>
+          setShowVariations(!showVariations)
+        }
+        className="w-full flex items-center justify-between p-4 bg-white"
+      >
+        <div className="flex items-center gap-3">
 
-      {item.variations.map((variation, index) => (
-        <button
-          key={index}
-          onClick={() =>
-            setSelectedVariation(variation)
-          }
-          className={`px-6 py-3 rounded-2xl font-semibold transition ${
-            selectedVariation === variation
-              ? "bg-zinc-900 text-white"
-              : "bg-white text-zinc-700 border border-zinc-300"
-          }`}
-        >
-          {variation}
-        </button>
-      ))}
+          <span className="font-semibold">
+            Variation
+          </span>
+
+          <span className="text-xs px-2 py-1 rounded-full bg-red-100 text-red-500">
+            Required
+          </span>
+
+        </div>
+
+        <span>
+          {selectedVariation || "Select"}
+        </span>
+
+      </button>
+
+      {showVariations && (
+        <div className="border-t">
+
+          {item.variations.map(
+            (variation) => (
+              <button
+                key={variation}
+                onClick={() => {
+                  setSelectedVariation(
+                    variation
+                  );
+                  setShowVariations(false);
+                }}
+                className={`w-full text-left px-4 py-4 hover:bg-zinc-50 ${
+                  selectedVariation ===
+                  variation
+                    ? "bg-zinc-100 font-semibold"
+                    : ""
+                }`}
+              >
+                {variation}
+              </button>
+            )
+          )}
+
+        </div>
+      )}
 
     </div>
 
