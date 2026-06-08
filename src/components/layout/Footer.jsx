@@ -14,7 +14,7 @@ export default function Footer() {
 
               <Image
                 src="/logo.webp"
-                alt="Chic N Fire"
+                alt="Chick N Fire"
                  width={160}
                  height={50}
               />
@@ -94,7 +94,7 @@ export default function Footer() {
 
         <div className="border-t border-zinc-200 mt-8 pt-5 text-center text-zinc-500">
 
-          © 2026 Chic N Fire. All Rights Reserved.
+          © 2026 SAHAAB. All Rights Reserved.
 
         </div>
 

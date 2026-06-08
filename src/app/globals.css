@@ -17,6 +17,19 @@ body {
   color: var(--foreground);
 }
 
+input,
+textarea,
+select {
+  color: #18181b !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #18181b !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
 @keyframes fadeIn {
   from {

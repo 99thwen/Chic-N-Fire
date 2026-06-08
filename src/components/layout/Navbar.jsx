@@ -28,7 +28,7 @@ const [location, setLocation] =
 <div>
   <Image
     src="/logo.webp"
-    alt="Chic N Fire"
+    alt="Chick N Fire"
     width={190}
     height={190}
     className="w-auto h-auto"

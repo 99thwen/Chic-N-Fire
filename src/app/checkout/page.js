@@ -186,7 +186,7 @@ return (
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-zinc-200 bg-white rounded-2xl px-4 py-3  outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-[#FFD400]"
               />
 
               <input
@@ -196,7 +196,8 @@ return (
                 maxLength={11}
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full border border-zinc-200 bg-white rounded-2xl px-4 py-3 outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-[#FFD400]"
+                
               />
 
               <input
@@ -205,7 +206,7 @@ return (
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-zinc-200 bg-white rounded-2xl px-4 py-3  outline-none focus:border-[#FFD400]"
+                className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-[#FFD400]"
               />
 
             </div>
@@ -265,7 +266,7 @@ return (
               rows="4"
               value={formData.notes}
               onChange={handleChange}
-              className="w-full border border-zinc-200 bg-white rounded-2xl px-4 py-3 outline-none focus:border-[#FFD400]"
+              className="w-full border border-zinc-200 bg-white rounded-2xl px-5 py-4 text-zinc-900 placeholder:text-zinc-400 outline-none focus:border-[#FFD400]"
             />
 
           </div>

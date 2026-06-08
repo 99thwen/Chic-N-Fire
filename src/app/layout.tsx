@@ -14,7 +14,7 @@ const poppins = Poppins({
 
 
 export const metadata: Metadata = {
-  title: "Chic n Fire",
+  title: "Chick n Fire",
 description: "Premium Fast Food in Peshawar",
 };
 
