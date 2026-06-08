@@ -83,11 +83,28 @@ const unitPrice = variationPrice;
 
 const totalPrice =
   unitPrice * quantity;
-  
+  const isDisabled =
+  (item.pizzaVariations &&
+    !selectedPizzaFlavor) ||
+
+  (item.pizza1Variations &&
+    !selectedPizza1Flavor) ||
+
+  (item.pizza2Variations &&
+    !selectedPizza2Flavor) ||
+
+  (item.drinkVariations &&
+    !selectedDrinkFlavor) ||
+
+  (item.drink1Variations &&
+    !selectedDrink1Flavor) ||
+
+  (item.drink2Variations &&
+    !selectedDrink2Flavor);
 return (
   <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
 
-    <div className="relative bg-white w-full max-w-6xl h-[90vh] rounded-3xl overflow-hidden animate-scaleIn">
+    <div className="relative bg-white w-full max-w-6xl h-[95vh] lg:h-[90vh] rounded-3xl overflow-hidden animate-scaleIn">
 
       <button
         onClick={onClose}
@@ -125,10 +142,7 @@ return (
 
             </div>
 
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-100 text-zinc-700 text-sm font-semibold whitespace-nowrap">
-   {selectedVariation?.name || "Select"}
-
-</span>
+         
           </div>
 
           <div className="mt-10">
@@ -579,7 +593,7 @@ return (
                   quantity > 1 &&
                   setQuantity(quantity - 1)
                 }
-                className="w-14 h-14 text-2xl bg-zinc-100 text-zinc-900 hover:bg-zinc-200  font-black transition"
+                className="w-12 h-12 md:w-14 md:h-14 text-2xl bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-black transition"
               >
                 -
               </button>
@@ -592,7 +606,7 @@ return (
                 onClick={() =>
                   setQuantity(quantity + 1)
                 }
-                className="w-14 h-14 text-2xl bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-black transition"
+                className="w-12 h-12 md:w-14 md:h-14 text-2xl bg-zinc-100 text-zinc-900 hover:bg-zinc-200 font-black transition"
               >
                 +
               </button>
@@ -601,25 +615,7 @@ return (
 
 
 <button
-disabled={
-  (item.pizzaVariations &&
-    !selectedPizzaFlavor) ||
-
-  (item.pizza1Variations &&
-    !selectedPizza1Flavor) ||
-
-  (item.pizza2Variations &&
-    !selectedPizza2Flavor) ||
-
-  (item.drinkVariations &&
-    !selectedDrinkFlavor) ||
-
-  (item.drink1Variations &&
-    !selectedDrink1Flavor) ||
-
-  (item.drink2Variations &&
-    !selectedDrink2Flavor)
-}
+disabled={isDisabled}
   onClick={() => {
 
     addToCart({
@@ -647,22 +643,11 @@ drink2Flavor:
     setTimeout(() => {
       setShowToast(false);
       onClose();
-    }, 1500);
+    }, 1000);
 
   }}
-  className={`flex-1 py-5 rounded-2xl font-black text-xl transition ${
-  (item.pizzaVariations &&
-    !selectedPizzaFlavor) ||
-
-  (item.pizza1Variations &&
-    !selectedPizza1Flavor) ||
-
-  (item.pizza2Variations &&
-    !selectedPizza2Flavor) ||
-
-  (item.drinkVariations &&
-    !selectedDrinkFlavor)
-
+className={`flex-1 py-5 rounded-2xl font-black text-xl transition ${
+  isDisabled
     ? "bg-zinc-300 text-zinc-500 cursor-not-allowed"
     : "bg-[#FFD400] hover:bg-[#F4C400] text-black"
 }`}

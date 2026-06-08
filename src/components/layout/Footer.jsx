@@ -25,14 +25,24 @@ export default function Footer() {
                   <span className="font-semibold text-zinc-900">
                     Phone:
                   </span>{" "}
-                  +92 333 5823184
+                  <a
+  href="tel:+923335823184"
+  className="hover:text-orange-500 transition"
+>
+  +92 333 5823184
+</a>
                 </p>
 
                 <p>
                   <span className="font-semibold text-zinc-900">
                     Email:
                   </span>{" "}
-                  info@chicnfire.com
+                  <a
+  href="mailto:info@chicnfire.com"
+  className="hover:text-orange-500 transition"
+>
+  info@chicnfire.com
+</a>
                 </p>
 
                 <p>
@@ -52,11 +62,11 @@ export default function Footer() {
           <div>
 
             <h3 className="text-xl font-bold text-zinc-900 mb-3">
+              
               Our Timings
             </h3>
 
-            <div className="space-y-2 text-zinc-600 mb-6">
-
+<div className="space-y-2 text-zinc-600 text-sm md:text-base">
               <p>Monday - Sunday</p>
 
               <p>11:00 AM - 02:00 AM</p>
@@ -94,7 +104,7 @@ export default function Footer() {
 
         <div className="border-t border-zinc-200 mt-8 pt-5 text-center text-zinc-500">
 
-          © 2026 SAHAAB. All Rights Reserved.
+         © {new Date().getFullYear()} Chick N Fire. All Rights Reserved.
 
         </div>
 

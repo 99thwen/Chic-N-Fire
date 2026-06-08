@@ -23,8 +23,12 @@ export function CartProvider({ children }) {
       localStorage.getItem("cartItems");
 
     if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
-    }
+  try {
+    setCartItems(JSON.parse(storedCart));
+  } catch {
+    localStorage.removeItem("cartItems");
+  }
+}
 
   }, []);
 
@@ -37,16 +41,10 @@ export function CartProvider({ children }) {
 
   }, [cartItems]);
 
-  const addToCart = (product) => {
-
-    setCartItems((prev) => [
-      ...prev,
-      product,
-    ]);
-
-    setIsCartOpen(true);
-
-  };
+const addToCart = (product) => {
+  setCartItems((prev) => [...prev, product]);
+  setIsCartOpen(true);
+};
 
   const removeFromCart = (id) => {
 
@@ -75,34 +73,31 @@ export function CartProvider({ children }) {
     );
 
   };
-
-  const decreaseQuantity = (id) => {
-
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.cartId === id
-          ? {
-              ...item,
-              quantity:
-                item.quantity > 1
-                  ? item.quantity - 1
-                  : 1,
-                price:
-                    item.quantity > 1
-                      ? item.unitPrice *
-                        (item.quantity - 1)
-                      : item.price,
-                              }
-                            : item
-                        )
-                      );
-
-
-  };
+const decreaseQuantity = (id) => {
+  setCartItems((prev) =>
+    prev.map((item) =>
+      item.cartId === id
+        ? {
+            ...item,
+            quantity:
+              item.quantity > 1
+                ? item.quantity - 1
+                : 1,
+            price:
+              item.quantity > 1
+                ? item.unitPrice *
+                  (item.quantity - 1)
+                : item.price,
+          }
+        : item
+    )
+  );
+};
 
 
-  const clearCart = () => {
+const clearCart = () => {
   setCartItems([]);
+  localStorage.removeItem("cartItems");
 };
 
 

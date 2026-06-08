@@ -14,8 +14,8 @@ export default function FoodCard({
     isFavorite,
   } = useFavorites();
 const displayPrice =
-  product.price ||
   product.variations?.[0]?.price ||
+  product.price ||
   0;
  return (
   <div className="bg-white rounded-2xl border border-zinc-200 flex overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200">
@@ -29,7 +29,7 @@ const displayPrice =
           alt={product.title}
           fill
           sizes="200px"
-          className="object-cover"
+          className="object-contain p-2"
         />
 
       </div>

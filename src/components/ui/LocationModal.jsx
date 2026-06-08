@@ -1,50 +1,93 @@
 "use client";
 
 import { useEffect, useState } from "react";
-const cityAreas = {
-  Peshawar: [
-    "Hayatabad Phase 1",
-    "Hayatabad Phase 2",
-    "Hayatabad Phase 3",
-    "Hayatabad Phase 4",
-    "Hayatabad Phase 5",
-    "Hayatabad Phase 6",
-    "Hayatabad Phase 7",
-    "University Town",
-    "Town",
-    "Tehkal",
-    "Tehkal Bala",
-    "Tehkal Payan",
+const cityAreas = { Peshawar: [ "Hayatabad Phase 1", 
+  "Hayatabad Phase 2", 
+  "Hayatabad Phase 3", 
+  "Hayatabad Phase 4", 
+  "Hayatabad Phase 5",
+   "Hayatabad Phase 6", 
+  "Hayatabad Phase 7", 
+  "University Town",
+   "Town", 
+   "Tehkal", 
+   "Tehkal Bala",
+    "Tehkal Payan", 
     "Saddar",
-    "Cantt",
-    "DHA",
-    "Ring Road",
-    "Warsak Road",
-    "Board Bazaar",
-    "Karkhano Market",
-    "GT Road",
-    "Kohat Road",
-    "Dalazak Road",
-    "Faqirabad",
-    "Gulbahar",
-    "Hashtnagri",
-    "Nishtarabad",
-    "Yakatoot",
-    "Chowk Yadgar",
-    "Sufaid Dheri",
-    "Arbab Road",
-    "Askari 2",
-    "Askari 6",
-    "Bilal Town",
-    "Ashrafia Colony",
-    "Badezai",
-    "Behari Colony",
-    "Canal Road",
-    "Nasir Bagh Road",
-    "Jamrud Road",
-  ],
-};
+     "Cantt", 
+     "DHA", 
+     "Ring Road",
+      "Warsak Road",
+       "Board Bazaar",
+        "Karkhano Market", 
+        "GT Road", 
+        "Kohat Road", 
+        "Dalazak Road",
+         "Faqirabad",
+          "Gulbahar", 
+         "Hashtnagri", 
+         "Nishtarabad", 
+         "Yakatoot", 
+         "Chowk Yadgar", 
+         "Sufaid Dheri", 
+         "Arbab Road",
+          "Askari 2",
+          "Askari 6", 
+          "Bilal Town", 
+          "Ashrafia Colony", 
+          "Badezai", 
+          "Behari Colony",
+           "Canal Road", 
+           "Nasir Bagh Road", 
+   "Jamrud Road", 
+  ], };
+const areaETA = {
+  "Hayatabad Phase 1": "20-25 min",
+  "Hayatabad Phase 2": "20-25 min",
+  "Hayatabad Phase 3": "20-25 min",
+  "Hayatabad Phase 4": "20-25 min",
+  "Hayatabad Phase 5": "15-20 min",
+  "Hayatabad Phase 6": "15-20 min",
+  "Hayatabad Phase 7": "15-20 min",
 
+  "University Town": "25-35 min",
+  "Town": "25-35 min",
+  "Tehkal": "25-35 min",
+  "Tehkal Bala": "30-40 min",
+  "Tehkal Payan": "30-40 min",
+
+  "Ring Road": "30-40 min",
+  "Jamrud Road": "20-30 min",
+  "Board Bazaar": "35-45 min",
+  "Karkhano Market": "15-25 min",
+
+  "Saddar": "40-50 min",
+  "Cantt": "40-50 min",
+  "DHA": "40-50 min",
+
+  "GT Road": "40-50 min",
+  "Kohat Road": "45-55 min",
+  "Dalazak Road": "45-60 min",
+
+  "Faqirabad": "45-55 min",
+  "Gulbahar": "45-55 min",
+  "Hashtnagri": "50-60 min",
+  "Nishtarabad": "50-60 min",
+  "Yakatoot": "50-60 min",
+  "Chowk Yadgar": "50-60 min",
+
+  "Sufaid Dheri": "25-35 min",
+  "Arbab Road": "35-45 min",
+  "Askari 2": "35-45 min",
+  "Askari 6": "35-45 min",
+
+  "Bilal Town": "30-40 min",
+  "Ashrafia Colony": "35-45 min",
+  "Badezai": "45-55 min",
+  "Behari Colony": "40-50 min",
+  "Canal Road": "35-45 min",
+  "Nasir Bagh Road": "30-40 min",
+};
 
 export default function LocationModal({
   open,
@@ -69,7 +112,7 @@ const [locationDetected, setLocationDetected] =
 const [showAreas, setShowAreas] =
   useState(false);
   const pickupBranches = [
-    "Chic n Fire - Hayatabad",
+    "Chick n Fire - Hayatabad",
     
   ];
 
@@ -105,14 +148,14 @@ setSearchArea("Ring Road");
  const handleContinue = () => {
   if (!area) return;
 
-  localStorage.setItem(
-    "location",
-    JSON.stringify({
-      deliveryType,
-      city,
-      area,
-    })
-  );
+  sessionStorage.setItem(
+  "location",
+  JSON.stringify({
+    deliveryType,
+    city,
+    area,
+  })
+);
 
   setOpen(false);
 };
@@ -154,7 +197,7 @@ const filteredAreas =
             <div className="flex justify-center">
               <img
                 src="/logo.webp"
-                alt="Chic n Fire"
+                alt="Chick n Fire"
                className="h-20 w-auto object-contain"
                 
                 
@@ -298,9 +341,9 @@ const filteredAreas =
         >
           <span>{item}</span>
 
-          <span className="text-xs text-zinc-400">
-            ~30 min
-          </span>
+         <span className="text-xs text-zinc-400">
+  {areaETA[item] || "30-45 min"}
+</span>
 
         </button>
 

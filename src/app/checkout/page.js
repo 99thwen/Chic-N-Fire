@@ -20,7 +20,7 @@ import { db } from "../../lib/firebase";
 import { useCart } from "../../context/CartContext";
 import { FaMoneyBillWave } from "react-icons/fa";
 import Footer from "../../components/layout/Footer";
-
+import { useRouter } from "next/navigation";
 export default function CheckoutPage() {
 
   const {
@@ -44,6 +44,12 @@ const [formData, setFormData] = useState({
     (acc, item) => acc + item.price,
     0
   );
+const router = useRouter();
+useEffect(() => {
+  if (cartItems.length === 0) {
+    router.push("/");
+  }
+}, [cartItems]);
 
   if (success) {
 
@@ -113,7 +119,10 @@ const [formData, setFormData] = useState({
       alert("Fill all required fields");
       return;
     }
-
+if (!/^03\d{9}$/.test(formData.phone)) {
+  alert("Enter valid phone number");
+  return;
+}
     try {
 
       setLoading(true);
@@ -174,7 +183,7 @@ return (
 
           <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-4 md:p-6 mb-5">
 
-            <h3 className="font-bold text-lg mb-5">
+            <h3  className="font-bold text-lg text-black mb-5">
               Customer Information
             </h3>
 
@@ -215,7 +224,7 @@ return (
 
           <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-4 md:p-6 mb-5">
 
-            <h3 className="font-bold text-lg mb-5">
+            <h3 className="font-bold text-lg text-black mb-5">
               Delivery Address
             </h3>
 
@@ -244,7 +253,7 @@ return (
 
           <div className="bg-zinc-50 border border-zinc-200 rounded-3xl  p-4 md:p-6 mb-5">
 
-            <h3 className="font-bold text-lg mb-5">
+            <h3 className="font-bold text-lg text-black mb-5">
               Delivery Time
             </h3>
 
@@ -256,7 +265,7 @@ return (
 
           <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-4 md:p-6 mb-5">
 
-            <h3 className="font-bold text-lg mb-5">
+            <h3 className="font-bold text-lg text-black mb-5">
               Special Instructions
             </h3>
 
@@ -274,7 +283,7 @@ return (
 
       <div className="bg-zinc-50 border border-zinc-200 rounded-3xl p-4 mb-5">
 
-  <h3 className="font-bold text-base mb-3">
+  <h3 className="font-bold text-lg text-black mb-5">
     Payment Method
   </h3>
 
@@ -367,7 +376,9 @@ return (
               <span>Rs 0</span>
             </div>
 
-            <div className="flex justify-between text-2xl font-black">
+            
+              <div className="flex justify-between text-2xl font-black text-black">
+
               <span>Grand Total</span>
               <span>Rs {total}</span>
             </div>

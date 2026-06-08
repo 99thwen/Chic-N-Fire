@@ -74,8 +74,7 @@ useEffect(() => {
 
 </div>
 
-        <div className="flex-1 overflow-y-auto p-6 pb-40">
-
+        <div className="flex-1 overflow-y-auto p-6">
           {cartItems.length === 0 ? (
 
             <div className="h-full flex items-center justify-center">
@@ -94,12 +93,12 @@ useEffect(() => {
 
                 <div
                   key={item.cartId}
-                  className="bg-zinc-100 border border-zinc-200 rounded-3xl p-4"
+                  className="bg-zinc-100 border border-zinc-200 rounded-2xl p-3"
                 >
 
                   <div className="flex gap-4">
 
-                    <div className="relative w-24 h-24 rounded-2xl overflow-hidden">
+                    <div className="relative w-20 h-20 rounded-2xl overflow-hidden">
 
                       <Image
                         src={item.image}
@@ -168,7 +167,7 @@ useEffect(() => {
                                 item.cartId
                               )
                             }
-                            className="w-10 h-10 text-zinc-900 text-xl"
+                            className="w-8 h-8 text-zinc-900 text-xl"
                           >
                             -
                           </button>
@@ -183,7 +182,7 @@ useEffect(() => {
                                 item.cartId
                               )
                             }
-                            className="w-10 h-10 text-zinc-900 text-xl"
+                            className="w-8 h-8 text-zinc-900 text-xl"
                           >
                             +
                           </button>
@@ -210,7 +209,8 @@ useEffect(() => {
 
         </div>
 
-    <div className="p-6 border-t border-zinc-200 bg-white">
+
+  <div className="sticky bottom-0 p-6 border-t border-zinc-200 bg-white">
 
   <div className="flex items-center justify-between mb-6">
 
@@ -225,6 +225,10 @@ useEffect(() => {
   </div>
 
   <Link
+ 
+  onClick={() =>
+    setIsCartOpen(false)
+  }
     href="/checkout"
     className="block w-full bg-orange-500 hover:bg-orange-600 transition py-5 rounded-2xl text-white font-black text-xl text-center"
   >

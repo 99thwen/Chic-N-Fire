@@ -4,30 +4,32 @@ export default function Categories({
   setSelectedCategory,
 }) {
   return (
-    <div className="sticky top-16 z-50 bg-white border-b border-zinc-200 shadow-sm">
+    <div className="sticky top-[80px] z-40 bg-zinc-100 pt-4">
+      <div className="max-w-7xl mx-auto px-4 overflow-x-auto bg-white rounded-2xl border border-zinc-200 shadow-sm">
 
-      <div className="max-w-7xl mx-auto px-4 overflow-x-auto">
+        <div className="flex gap-2 py-3 min-w-max">
 
-        <div className="flex gap-3 py-4 min-w-max">
+          {categories.map((item) => (
 
-          {categories.map((item, index) => (
             <button
-              key={index}
-              onClick={() => setSelectedCategory(item)}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition whitespace-nowrap border ${
+              key={item}
+              onClick={() =>
+                setSelectedCategory(item)
+              }
+              className={`px-4 py-2 text-sm rounded-full border transition-all duration-200 font-semibold whitespace-nowrap shadow-sm ${
                 selectedCategory === item
-                  ? "bg-orange-500 text-white border-orange-500"
-                  : "bg-white text-zinc-700 border-zinc-200 hover:border-orange-500 hover:text-orange-500"
+                  ? "bg-[#FFD400] text-black border-[#FFD400]"
+                  : "bg-white text-zinc-700 border-zinc-200 hover:border-[#FFD400] hover:text-black"
               }`}
             >
               {item}
             </button>
+
           ))}
 
         </div>
 
       </div>
-
     </div>
   );
 }

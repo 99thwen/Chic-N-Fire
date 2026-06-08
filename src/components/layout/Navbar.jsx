@@ -3,21 +3,25 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] =
     useState(false);
-const [location, setLocation] =
-  useState(null);
 
   useEffect(() => {
-  const saved =
-    localStorage.getItem("location");
+    if (isMenuOpen) {
+      document.body.style.overflow =
+        "hidden";
+    } else {
+      document.body.style.overflow =
+        "auto";
+    }
 
-  if (saved) {
-    setLocation(JSON.parse(saved));
-  }
-}, []);
+    return () => {
+      document.body.style.overflow =
+        "auto";
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
       <nav className="sticky top-0 z-50 bg-white border-b border-zinc-200">
@@ -25,52 +29,36 @@ const [location, setLocation] =
         <div className="max-w-7xl mx-auto px-4">
 
           <div className="flex items-center justify-between h-24">
-<div>
-  <Image
-    src="/logo.webp"
-    alt="Chick N Fire"
-    width={190}
-    height={190}
-    className="w-auto h-auto"
-  />
 
-  
-</div>
+            <a href="/">
+              <Image
+                src="/logo.webp"
+                alt="Chick N Fire"
+                width={190}
+                height={190}
+                className="w-auto h-auto"
+              />
+            </a>
 
             <div className="hidden lg:flex items-center gap-10 text-zinc-700 font-semibold">
 
-              <a
-                href="#"
-                className="hover:text-[#FFD400] transition"
-              >
+              <a href="#" className="hover:text-[#FFD400]">
                 Home
               </a>
 
-              <a
-                href="#Deals"
-                className="hover:text-[#FFD400] transition"
-              >
+              <a href="#Deals" className="hover:text-[#FFD400]">
                 Deals
               </a>
 
-              <a
-                href="#Pizza"
-                className="hover:text-[#FFD400] transition"
-              >
+              <a href="#Pizza" className="hover:text-[#FFD400]">
                 Pizza
               </a>
 
-              <a
-                href="#Burgers"
-                className="hover:text-[#FFD400] transition"
-              >
+              <a href="#Burgers" className="hover:text-[#FFD400]">
                 Burgers
               </a>
 
-              <a
-                href="#Drinks"
-                className="hover:text-[#FFD400] transition"
-              >
+              <a href="#Drinks" className="hover:text-[#FFD400]">
                 Drinks
               </a>
 
@@ -78,9 +66,12 @@ const [location, setLocation] =
 
             <div className="hidden lg:flex items-center">
 
-              <button className="border border-[#FFD400] text-zinc-900 hover:bg-[#FFD400] px-7 py-3 rounded-full font-semibold transition">
+              <a
+                href="/login"
+                className="border border-[#FFD400] text-zinc-900 hover:bg-[#FFD400] px-7 py-3 rounded-full font-semibold transition"
+              >
                 Sign In / Register
-              </button>
+              </a>
 
             </div>
 
@@ -99,6 +90,8 @@ const [location, setLocation] =
 
       </nav>
 
+      {/* Mobile Drawer */}
+
       <div
         className={`fixed inset-0 z-[100] transition duration-300 ${
           isMenuOpen
@@ -106,7 +99,6 @@ const [location, setLocation] =
             : "invisible opacity-0"
         }`}
       >
-
         <div
           onClick={() =>
             setIsMenuOpen(false)
@@ -121,7 +113,6 @@ const [location, setLocation] =
               : "translate-x-full"
           }`}
         >
-
           <div className="p-6 border-b border-zinc-200 flex items-center justify-between">
 
             <h2 className="text-zinc-900 text-3xl font-black">
@@ -141,51 +132,41 @@ const [location, setLocation] =
 
           <div className="flex flex-col p-6">
 
-            <a
-              href="#"
-              className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
-            >
-              Home
-            </a>
+            {[
+              "Home",
+              "Deals",
+              "Pizza",
+              "Burgers",
+              "Drinks",
+            ].map((item) => (
+              <a
+                key={item}
+                href={
+                  item === "Home"
+                    ? "#"
+                    : `#${item}`
+                }
+                onClick={() =>
+                  setIsMenuOpen(false)
+                }
+                className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
+              >
+                {item}
+              </a>
+            ))}
 
             <a
-              href="#Deals"
-              className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
+              href="/login"
+              className="mt-10 border border-[#FFD400] text-zinc-900 py-4 rounded-2xl font-semibold hover:bg-[#FFD400] transition text-center"
             >
-              Deals
-            </a>
-
-            <a
-              href="#Pizza"
-              className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
-            >
-              Pizza
-            </a>
-
-            <a
-              href="#Burgers"
-              className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
-            >
-              Burgers
-            </a>
-
-            <a
-              href="#Drinks"
-              className="text-zinc-900 text-lg font-semibold py-5 border-b border-zinc-200"
-            >
-              Drinks
-            </a>
-
-            <button className="mt-10 border border-[#FFD400] text-zinc-900 py-4 rounded-2xl font-semibold hover:bg-[#FFD400] transition">
               Sign In / Register
-            </button>
+            </a>
 
           </div>
 
         </div>
 
       </div>
-
     </>
   );
 }
