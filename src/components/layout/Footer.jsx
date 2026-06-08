@@ -4,19 +4,19 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-zinc-200 mt-6">
 
-      <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="max-w-6xl mx-auto px-4 py-6">
 
-        <div className="grid md:grid-cols-[1.6fr_1fr] gap-10 items-start">
+        <div className="grid md:grid-cols-[1.6fr_1fr] gap-6 items-start">
 
           <div>
 
-            <div className="flex items-center gap-6">
+           <div className="flex flex-col md:flex-row items-center md:items-center gap-4 text-center md:text-left">
 
               <Image
                 src="/logo.webp"
                 alt="Chic N Fire"
-                width={220}
-                height={70}
+                 width={160}
+                 height={50}
               />
 
               <div className="space-y-3 text-zinc-600">
@@ -51,7 +51,7 @@ export default function Footer() {
 
           <div>
 
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">
+            <h3 className="text-xl font-bold text-zinc-900 mb-3">
               Our Timings
             </h3>
 

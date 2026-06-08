@@ -132,8 +132,12 @@ useEffect(() => {
   )}
 
   {item.variation && (
-    <p>{item.variation}</p>
-  )}
+  <p>
+    {typeof item.variation === "object"
+      ? item.variation.name
+      : item.variation}
+  </p>
+)}
 
 </div>
 

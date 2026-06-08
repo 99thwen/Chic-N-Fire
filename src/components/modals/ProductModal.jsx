@@ -623,10 +623,10 @@ disabled={
   onClick={() => {
 
     addToCart({
-  cartId: Date.now(),
+    cartId: Date.now(),
   title: item.title,
   image: item.image,
-  variation: selectedVariation,
+  variation: selectedVariation?.name || "",
 
   pizzaFlavor: selectedPizzaFlavor,
   pizza1Flavor: selectedPizza1Flavor,
