@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 
 import { db } from "../../lib/firebase";
-
+import { useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { FaMoneyBillWave } from "react-icons/fa";
 import Footer from "../../components/layout/Footer";
