@@ -8,7 +8,13 @@ import {
 } from "react";
 
 import { Search } from "lucide-react";
-import { menuData } from "../../data/menuData";
+import { db } from "../../lib/firebase";
+
+import {
+  collection,
+  onSnapshot,
+} from "firebase/firestore"; 
+
 import FoodCard from "../cards/FoodCard";
 import ProductModal from "../modals/ProductModal";
 
@@ -29,21 +35,47 @@ export default function MenuSection() {
 
   const [activeCategory, setActiveCategory] =
     useState("Deals");
+const [menu, setMenu] = useState([]);
 
   const searchRef = useRef(null);
 
   const filteredMenu = useMemo(() => {
-    return menuData.filter((product) =>
-      `${product.title} ${
-        product.description || ""
-      }`
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase())
-    );
+    return menu.filter(
+  (product) =>
+    product.available !== false &&
+    `${product.title} ${
+      product.description || ""
+    }`
+      .toLowerCase()
+      .includes(
+        searchQuery.toLowerCase()
+      )
+);git 
   }, [searchQuery]);
 
   const hasResults =
     filteredMenu.length > 0;
+useEffect(() => {
+
+  const unsubscribe =
+    onSnapshot(
+      collection(db, "menu"),
+      (snapshot) => {
+
+        const items =
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+
+        setMenu(items);
+
+      }
+    );
+
+  return () => unsubscribe();
+
+}, []);
 
   useEffect(() => {
     const handleScroll = () => {
