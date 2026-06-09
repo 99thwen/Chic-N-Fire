@@ -36,6 +36,8 @@ export default function AdminPage() {
 
   const [orders, setOrders] =
     useState([]);
+const [menuItems, setMenuItems] =
+  useState([]);
 
   const logout = async () => {
 
@@ -92,18 +94,50 @@ export default function AdminPage() {
     return () => unsubscribe();
 
   }, []);
+useEffect(() => {
 
-  const updateStatus =
-    async (id, status) => {
+  const unsubscribe =
+    onSnapshot(
+      collection(db, "menu"),
+      (snapshot) => {
 
-      const orderRef =
-        doc(db, "orders", id);
+      const items =
+  snapshot.docs.map((doc) => ({
+    firestoreId: doc.id,
+    ...doc.data(),
+  }));
 
-      await updateDoc(orderRef, {
-        status,
-      });
+        setMenuItems(items);
 
-    };
+      }
+    );
+
+  return () => unsubscribe();
+
+}, []);
+const toggleAvailability =
+  async (id, currentStatus) => {
+
+    await updateDoc(
+      doc(db, "menu", id),
+      {
+        available: !currentStatus,
+      }
+    );
+
+  };
+
+const updateStatus =
+  async (id, status) => {
+
+    const orderRef =
+      doc(db, "orders", id);
+
+    await updateDoc(orderRef, {
+      status,
+    });
+
+  };
 
   const pendingOrders =
     useMemo(
@@ -125,6 +159,32 @@ export default function AdminPage() {
         ).length,
       [orders]
     );
+const [showMenu, setShowMenu] =
+  useState(false);
+  const [activeTab, setActiveTab] =
+  useState("pending");
+
+const [menuSearch, setMenuSearch] =
+  useState("");
+  
+    const filteredOrders =
+  orders.filter((order) =>
+    activeTab === "pending"
+      ? order.status === "pending"
+      : order.status === "completed"
+  );
+
+const filteredMenuItems =
+  menuItems.filter((item) =>
+    item.title
+      ?.toLowerCase()
+      .includes(
+        menuSearch.toLowerCase()
+      )
+  );
+
+
+
 
   if (checkingAuth) {
 
@@ -135,7 +195,7 @@ export default function AdminPage() {
     );
   }
 
- return (
+return (
   <div className="min-h-screen bg-zinc-100 text-zinc-900 p-4 md:p-6">
     <div className="max-w-7xl mx-auto">
 
@@ -201,10 +261,135 @@ export default function AdminPage() {
         </div>
 
       </div>
+<div className="bg-white border border-zinc-200 rounded-3xl p-6 mb-8">
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+  <button
+    onClick={() =>
+      setShowMenu(!showMenu)
+    }
+    className="w-full flex items-center justify-between"
+  >
+    <h2 className="text-2xl font-bold">
+     Menu Management ({menuItems.length})
+    </h2>
 
-        {orders.map((order) => (
+    <span className="font-bold text-xl">
+      {showMenu ? "▲" : "▼"}
+    </span>
+  </button>
+
+{showMenu && (
+
+  <>
+  
+    <div className="mb-4">
+      <input
+        type="text"
+        placeholder="Search menu item..."
+        value={menuSearch}
+        onChange={(e) =>
+          setMenuSearch(e.target.value)
+        }
+        className="w-full border rounded-xl p-3"
+      />
+    </div>
+
+    <div className="space-y-3 mt-4">
+
+      {filteredMenuItems.map(
+        (item, index) => (
+
+          <div
+            key={item.firestoreId || item.id || index}
+            className="flex items-center justify-between border rounded-xl p-3"
+          >
+
+            <div>
+              <h3 className="font-semibold">
+                {item.title}
+              </h3>
+
+              <p className="text-zinc-500 text-sm">
+                Rs {item.price || item.variations?.[0]?.price}
+              </p>
+            </div>
+
+            <button
+              onClick={() =>
+                toggleAvailability(
+                  item.firestoreId || item.id,
+                  item.available
+                )
+              }
+              className={`px-4 py-2 rounded-xl font-semibold ${
+                item.available
+                  ? "bg-green-100 text-green-700"
+                  : "bg-red-100 text-red-700"
+              }`}
+            >
+              {item.available
+                ? "In Stock"
+                : "Out of Stock"}
+            </button>
+
+          </div>
+
+        )
+      )}
+
+    </div>
+
+  </>
+
+)} </div> 
+<div className="flex gap-3 mb-5">
+
+  <button
+    onClick={() =>
+      setActiveTab("pending")
+    }
+    className={`px-5 py-2 rounded-xl font-semibold ${
+      activeTab === "pending"
+        ? "bg-[#FFD400]"
+        : "bg-white border"
+    }`}
+  >
+    Pending ({pendingOrders})
+  </button>
+
+  <button
+    onClick={() =>
+      setActiveTab("completed")
+    }
+    className={`px-5 py-2 rounded-xl font-semibold ${
+      activeTab === "completed"
+        ? "bg-green-500 text-white"
+        : "bg-white border"
+    }`}
+  >
+    Completed ({completedOrders})
+  </button>
+
+</div>
+
+<div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+
+  {filteredOrders.length === 0 && (
+    <div className="col-span-full bg-white rounded-2xl p-10 text-center">
+
+      <h3 className="text-2xl font-bold">
+        No {activeTab} orders
+      </h3>
+
+      <p className="text-zinc-500 mt-2">
+        Nothing to show here.
+      </p>
+
+    </div>
+  )}
+
+  {filteredOrders.map((order) => (
+      
 
           <div
             key={order.id}
@@ -348,7 +533,7 @@ export default function AdminPage() {
                   </button>
                 )}
 
-                {order.status !== "cancelled" && (
+                {order.status === "pending" && (
                   <button
                     onClick={() =>
                       updateStatus(
@@ -370,8 +555,11 @@ export default function AdminPage() {
 
         ))}
 
-      </div>
 
+
+      </div>
     </div>
   </div>
-); }
+
+);
+}
