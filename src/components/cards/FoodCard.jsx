@@ -56,14 +56,19 @@ const displayPrice =
 
           <div className="mt-2 md:mt-3 flex items-center justify-between">
 
-            <button
-              onClick={() =>
-                onCustomize(product)
-              }
-              className="bg-[#FFD400] hover:bg-red-600 hover:text-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300"
+
+{!product.available ? (
+  <div className="mt-3 bg-red-100 text-red-700 text-center py-2 rounded-xl font-semibold">
+    Out of Stock
+  </div>
+) : (
+  <button
+    onClick={handleAddToCart}
+   className="bg-[#FFD400] hover:bg-red-600 hover:text-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300"
             >
-              Add To Cart
-            </button>
+    Add To Cart
+  </button>
+)}
 
             <button
               onClick={() =>
