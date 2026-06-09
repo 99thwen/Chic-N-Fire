@@ -22,17 +22,25 @@ const displayPrice =
 
     <div className="flex w-full">
 
-      <div className="relative w-24 h-24 md:w-40 md:h-44 flex-shrink-0">
+   <div className="relative w-24 h-24 md:w-40 md:h-44 flex-shrink-0">
 
-        <Image
-          src={product.image}
-          alt={product.title}
-          fill
-          sizes="200px"
-          className="object-contain p-2"
-        />
+  {!product.available && (
+    <div className="absolute top-2 left-2 z-10 bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full">
+      OUT OF STOCK
+    </div>
+  )}
 
-      </div>
+  <Image
+    src={product.image}
+    alt={product.title}
+    fill
+    sizes="200px"
+    className={`object-contain p-2 ${
+      !product.available ? "opacity-50" : ""
+    }`}
+  />
+
+</div>
 
       <div className="flex-1 p-3 md:p-5 flex flex-col justify-between md:min-h-[176px]">
 
@@ -56,16 +64,18 @@ const displayPrice =
 
           <div className="mt-2 md:mt-3 flex items-center justify-between">
 
-
 {!product.available ? (
-  <div className="mt-3 bg-red-100 text-red-700 text-center py-2 rounded-xl font-semibold">
-    Out of Stock
-  </div>
+  <button
+    disabled
+    className="bg-zinc-300 text-zinc-600 px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base cursor-not-allowed"
+  >
+    Out Of Stock
+  </button>
 ) : (
   <button
-    onClick={onCustomize}
-   className="bg-[#FFD400] hover:bg-red-600 hover:text-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300"
-            >
+    onClick={handleAddToCart}
+    className="bg-[#FFD400] hover:bg-red-600 hover:text-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300"
+  >
     Add To Cart
   </button>
 )}

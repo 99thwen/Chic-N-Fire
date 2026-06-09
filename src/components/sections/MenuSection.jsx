@@ -38,10 +38,9 @@ export default function MenuSection() {
 const [menu, setMenu] = useState([]);
 
   const searchRef = useRef(null);
-const filteredMenu = useMemo(() => {
+      const filteredMenu = useMemo(() => {
   return menu.filter(
     (product) =>
-      product.available !== false &&
       `${product.title} ${
         product.description || ""
       }`
@@ -51,6 +50,7 @@ const filteredMenu = useMemo(() => {
         )
   );
 }, [menu, searchQuery]);
+
 
   const hasResults =
     filteredMenu.length > 0;
