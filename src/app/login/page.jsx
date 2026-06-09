@@ -49,61 +49,57 @@ export default function LoginPage() {
 
   };
 
-  return (
+ return (
+  <div className="min-h-screen bg-zinc-100 flex items-center justify-center p-6">
 
-    <div className="min-h-screen bg-black flex items-center justify-center p-6">
+    <div className="w-full max-w-md bg-white border border-zinc-200 rounded-3xl p-8 shadow-lg">
 
-      <div className="bg-zinc-900 border border-zinc-800 rounded-[30px] p-10 w-full max-w-md">
+      <div className="flex justify-center mb-6">
+        <img
+          src="/logo.webp"
+          alt="Chick n Fire"
+          className="h-20 object-contain"
+        />
+      </div>
 
-        <h1 className="text-5xl font-black text-white">
-          Admin Login
-        </h1>
+      <h1 className="text-3xl font-bold text-center text-zinc-900">
+        Admin Login
+      </h1>
 
-        <p className="text-zinc-400 mt-4">
-          Sign in to manage orders
-        </p>
+      <p className="text-center text-zinc-500 mt-2">
+        Sign in to manage orders
+      </p>
 
-        <div className="flex flex-col gap-5 mt-10">
+      <div className="flex flex-col gap-4 mt-8">
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
-            className="bg-zinc-950 border border-zinc-800 rounded-2xl px-5 py-5 text-white outline-none focus:border-orange-500"
-          />
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="h-12 rounded-xl border border-zinc-300 bg-white px-4 outline-none focus:border-[#FFD400]"
+        />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) =>
-              setPassword(
-                e.target.value
-              )
-            }
-            className="bg-zinc-950 border border-zinc-800 rounded-2xl px-5 py-5 text-white outline-none focus:border-orange-500"
-          />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="h-12 rounded-xl border border-zinc-300 bg-white px-4 outline-none focus:border-[#FFD400]"
+        />
 
-          <button
-            onClick={login}
-            disabled={loading}
-            className="bg-orange-500 hover:bg-orange-600 transition py-5 rounded-2xl text-white font-black text-xl mt-4"
-          >
-
-            {loading
-              ? "Signing In..."
-              : "Login"}
-
-          </button>
-
-        </div>
+        <button
+          onClick={login}
+          disabled={loading}
+          className="h-12 rounded-xl bg-[#FFD400] hover:bg-yellow-400 text-black font-semibold transition"
+        >
+          {loading ? "Signing In..." : "Login"}
+        </button>
 
       </div>
 
     </div>
 
-  );
+  </div>
+);
 }

@@ -142,9 +142,17 @@ export default function AdminPage() {
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
 
         <div>
-          <h1 className="text-3xl font-bold">
-            Chick n Fire Orders
-          </h1>
+
+  <img
+    src="/logo.webp"
+    alt="Chick n Fire"
+    className="h-16 mb-3"
+  />
+
+  <h1 className="text-3xl font-bold">
+    Orders Dashboard
+  </h1>
+        
 
           <p className="text-zinc-500 text-sm mt-1">
             Manage incoming orders
@@ -153,7 +161,7 @@ export default function AdminPage() {
 
         <div className="flex flex-wrap gap-3">
 
-          <div className="bg-white border border-zinc-200 rounded-xl px-4 py-3 shadow-sm">
+          <div className="bg-white border border-zinc-200 rounded-3xl p-5 shadow-md hover:shadow-lg transition">
             <p className="text-zinc-500 text-sm">
               Total Orders
             </p>
@@ -163,7 +171,7 @@ export default function AdminPage() {
             </h3>
           </div>
 
-          <div className="bg-yellow-100 border border-yellow-300 rounded-xl px-4 py-3">
+          <div className="bg-[#FFF7CC] border border-[#FFD400] rounded-xl px-4 py-3">
             <p className="text-yellow-800 text-sm font-medium">
               Pending
             </p>
@@ -334,7 +342,7 @@ export default function AdminPage() {
                         "completed"
                       )
                     }
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl font-semibold transition"
+                    className="bg-[#FFD400] hover:bg-yellow-400 text-black text-white px-4 py-2 rounded-xl font-semibold transition"
                   >
                     Complete
                   </button>
