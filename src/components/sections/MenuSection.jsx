@@ -38,20 +38,19 @@ export default function MenuSection() {
 const [menu, setMenu] = useState([]);
 
   const searchRef = useRef(null);
-
-  const filteredMenu = useMemo(() => {
-    return menu.filter(
-  (product) =>
-    product.available !== false &&
-    `${product.title} ${
-      product.description || ""
-    }`
-      .toLowerCase()
-      .includes(
-        searchQuery.toLowerCase()
-      )
-);git 
-  }, [searchQuery]);
+const filteredMenu = useMemo(() => {
+  return menu.filter(
+    (product) =>
+      product.available !== false &&
+      `${product.title} ${
+        product.description || ""
+      }`
+        .toLowerCase()
+        .includes(
+          searchQuery.toLowerCase()
+        )
+  );
+}, [menu, searchQuery]);
 
   const hasResults =
     filteredMenu.length > 0;
@@ -69,7 +68,7 @@ useEffect(() => {
           }));
 
         setMenu(items);
-
+console.log(items);
       }
     );
 
