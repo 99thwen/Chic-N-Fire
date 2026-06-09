@@ -11,10 +11,11 @@ import {
 } from "firebase/firestore";
 
 export default function UploadMenu() {
+const uploadMenu = async () => {
 
-  const uploadMenu = async () => {
+  console.log("BUTTON CLICKED");
 
-    try {
+  try { 
 
       for (const item of menuData) {
 
