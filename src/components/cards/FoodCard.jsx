@@ -73,7 +73,7 @@ const displayPrice =
   </button>
 ) : (
   <button
-    onClick={handleAddToCart}
+    onClick={onCustomize}
     className="bg-[#FFD400] hover:bg-red-600 hover:text-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-bold text-sm md:text-base transition-all duration-300"
   >
     Add To Cart
