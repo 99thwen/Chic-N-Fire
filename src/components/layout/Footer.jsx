@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -72,41 +73,42 @@ export default function Footer() {
               <p>11:00 AM - 02:00 AM</p>
 
             </div>
+<div className="flex flex-wrap justify-center gap-4">
 
-            <div className="flex flex-wrap gap-5 text-sm text-zinc-500">
+  <Link
+    href="/terms"
+    className="hover:text-[#FFD400]"
+  >
+    Terms & Conditions
+  </Link>
 
-              <a
-                href="#"
-                className="hover:text-orange-500 transition"
-              >
-                Terms & Conditions
-              </a>
+  <Link
+    href="/privacy-policy"
+    className="hover:text-[#FFD400]"
+  >
+    Privacy Policy
+  </Link>
 
-              <a
-                href="#"
-                className="hover:text-orange-500 transition"
-              >
-                Privacy Policy
-              </a>
-
-              <a
-                href="#"
-                className="hover:text-orange-500 transition"
-              >
-                Sitemap
-              </a>
-
-            </div>
+</div>
 
           </div>
 
         </div>
 
-        <div className="border-t border-zinc-200 mt-8 pt-5 text-center text-zinc-500">
+      <div className="border-t border-zinc-200 mt-8 pt-5 text-center text-zinc-500">
 
-         © {new Date().getFullYear()} Chick N Fire. All Rights Reserved.
+  © {new Date().getFullYear()} Chick N Fire. All Rights Reserved. ·{" "}
 
-        </div>
+  <a
+    href="https://wa.me/923336536648"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-[#FFD400] transition"
+  >
+    Developed by Studio S
+  </a>
+
+</div>
 
       </div>
 

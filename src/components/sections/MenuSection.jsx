@@ -35,7 +35,11 @@ export default function MenuSection() {
 
   const [activeCategory, setActiveCategory] =
     useState("Deals");
+
 const [menu, setMenu] = useState([]);
+const [menuLoaded, setMenuLoaded] =
+  useState(false);
+
 
   const searchRef = useRef(null);
       const filteredMenu = useMemo(() => {
@@ -66,8 +70,9 @@ useEffect(() => {
             id: doc.id,
             ...doc.data(),
           }));
+setMenu(items);
+setMenuLoaded(true);
 
-        setMenu(items);
 console.log(items);
       }
     );
@@ -198,7 +203,7 @@ console.log(items);
 
       {/* Products */}
       <div className="max-w-7xl mx-auto px-4 pt-8 pb-4">
-        {!hasResults ? (
+        {menuLoaded && !hasResults ? (
           <div className="py-20 text-center">
             <h2 className="text-3xl font-bold text-zinc-900">
               No Products Found

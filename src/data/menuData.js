@@ -1188,7 +1188,7 @@ category: "Starters",
   description:
     "Layers of pasta, rich meat sauce, creamy cheese, and Italian herbs baked to perfection.",
   price: 850, // replace later if needed
-  image: "/foods/lasagna.webp",
+  image: "/foods/starter2.webp",
   
 },
 {

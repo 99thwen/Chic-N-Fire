@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-const cityAreas = { Peshawar: [ "Hayatabad Phase 1", 
+const cityAreas = { Peshawar: [
+    "Hayatabad",
+     "Hayatabad Phase 1", 
   "Hayatabad Phase 2", 
   "Hayatabad Phase 3", 
   "Hayatabad Phase 4", 
@@ -42,6 +44,7 @@ const cityAreas = { Peshawar: [ "Hayatabad Phase 1",
    "Jamrud Road", 
   ], };
 const areaETA = {
+    "Hayatabad": "15-25 min", 
   "Hayatabad Phase 1": "20-25 min",
   "Hayatabad Phase 2": "20-25 min",
   "Hayatabad Phase 3": "20-25 min",
@@ -125,26 +128,157 @@ const [showAreas, setShowAreas] =
       document.body.style.overflow = "auto";
     };
   }, [open]);
-
 const handleLocation = () => {
   setDetectingLocation(true);
 
   navigator.geolocation.getCurrentPosition(
-    () => {
-      setDetectingLocation(false);
-      setLocationDetected(true);
+    async (position) => {
+const lat = position.coords.latitude;
+const lon = position.coords.longitude;
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+    );
 
-      // temporary auto-select
-     setArea("Ring Road");
-setSearchArea("Ring Road");
-    },
-    () => {
-      setDetectingLocation(false);
-      setLocationDetected(false);
-    }
-  );
+    const data = await res.json();
+
+    let detectedArea =
+      data.address.suburb ||
+      data.address.neighbourhood ||
+      data.address.city_district ||
+      data.address.town ||
+      "";
+if (!detectedArea) {
+  detectedArea = "Hayatabad";
+}
+
+if (detectedArea.toLowerCase().includes("hayatabad"))
+  detectedArea = "Hayatabad";
+
+else if (detectedArea.toLowerCase().includes("tehkal bala"))
+  detectedArea = "Tehkal Bala";
+
+else if (detectedArea.toLowerCase().includes("tehkal payan"))
+  detectedArea = "Tehkal Payan";
+
+else if (detectedArea.toLowerCase().includes("tehkal"))
+  detectedArea = "Tehkal";
+
+else if (
+  detectedArea.toLowerCase().includes("university")
+)
+  detectedArea = "University Town";
+
+else if (detectedArea.toLowerCase().includes("town"))
+  detectedArea = "Town";
+
+else if (detectedArea.toLowerCase().includes("saddar"))
+  detectedArea = "Saddar";
+
+else if (
+  detectedArea.toLowerCase().includes("cantonment") ||
+  detectedArea.toLowerCase().includes("cantt")
+)
+  detectedArea = "Cantt";
+
+else if (detectedArea.toLowerCase().includes("dha"))
+  detectedArea = "DHA";
+
+else if (detectedArea.toLowerCase().includes("ring"))
+  detectedArea = "Ring Road";
+
+else if (detectedArea.toLowerCase().includes("warsak"))
+  detectedArea = "Warsak Road";
+
+else if (detectedArea.toLowerCase().includes("board"))
+  detectedArea = "Board Bazaar";
+
+else if (detectedArea.toLowerCase().includes("karkhano"))
+  detectedArea = "Karkhano Market";
+
+else if (detectedArea.toLowerCase().includes("gt road"))
+  detectedArea = "GT Road";
+
+else if (detectedArea.toLowerCase().includes("kohat"))
+  detectedArea = "Kohat Road";
+
+else if (detectedArea.toLowerCase().includes("dalazak"))
+  detectedArea = "Dalazak Road";
+
+else if (detectedArea.toLowerCase().includes("faqirabad"))
+  detectedArea = "Faqirabad";
+
+else if (detectedArea.toLowerCase().includes("gulbahar"))
+  detectedArea = "Gulbahar";
+
+else if (detectedArea.toLowerCase().includes("hashtnagri"))
+  detectedArea = "Hashtnagri";
+
+else if (detectedArea.toLowerCase().includes("nishtarabad"))
+  detectedArea = "Nishtarabad";
+
+else if (detectedArea.toLowerCase().includes("yakatoot"))
+  detectedArea = "Yakatoot";
+
+else if (
+  detectedArea.toLowerCase().includes("chowk yadgar")
+)
+  detectedArea = "Chowk Yadgar";
+
+else if (detectedArea.toLowerCase().includes("sufaid"))
+  detectedArea = "Sufaid Dheri";
+
+else if (detectedArea.toLowerCase().includes("arbab"))
+  detectedArea = "Arbab Road";
+
+else if (detectedArea.toLowerCase().includes("askari 2"))
+  detectedArea = "Askari 2";
+
+else if (detectedArea.toLowerCase().includes("askari 6"))
+  detectedArea = "Askari 6";
+
+else if (detectedArea.toLowerCase().includes("bilal"))
+  detectedArea = "Bilal Town";
+
+else if (detectedArea.toLowerCase().includes("ashrafia"))
+  detectedArea = "Ashrafia Colony";
+
+else if (detectedArea.toLowerCase().includes("badezai"))
+  detectedArea = "Badezai";
+
+else if (detectedArea.toLowerCase().includes("behari"))
+  detectedArea = "Behari Colony";
+
+else if (detectedArea.toLowerCase().includes("canal"))
+  detectedArea = "Canal Road";
+
+else if (detectedArea.toLowerCase().includes("nasir bagh"))
+  detectedArea = "Nasir Bagh Road";
+
+else if (detectedArea.toLowerCase().includes("jamrud"))
+  detectedArea = "Jamrud Road";
+
+console.log("Detected Area:", detectedArea);
+
+    
+
+    setArea(detectedArea);
+    setSearchArea(detectedArea);
+
+    setLocationDetected(true);
+  } catch (err) {
+    console.error(err);
+  }
+setDetectingLocation(false);
+},
+(error) => {
+  console.error(error);
+
+  setDetectingLocation(false);
+  setLocationDetected(false);
+}
+);
 };
-
  const handleContinue = () => {
   if (!area) return;
 
@@ -182,7 +316,7 @@ const filteredAreas =
     background: "rgba(0,0,0,0.2)",
   }}
 >
-       <div className="relative w-[92%] max-w-[340px] md:max-w-[475px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white">
+       <div className="relative overflow-visible w-[92%] max-w-[340px] md:max-w-[475px] rounded-3xl bg-white">
           
 
           <button
@@ -192,7 +326,7 @@ const filteredAreas =
             ✕
           </button>
 
-          <div className="px-4 py-4 md:px-7 md:py-5">
+       <div className="overflow-visible px-4 py-4 md:px-7 md:py-5">
 
             <div className="flex justify-center">
               <img
@@ -244,7 +378,7 @@ const filteredAreas =
 
             {deliveryType === "delivery" && (
               <>
-                <p className="text-center text-[14px] font-semibold text-zinc-700">
+                <p className="text-center text-[14px] font-semibold text-black">
                   Please select your location
                 </p>
 
@@ -288,7 +422,7 @@ const filteredAreas =
                 </div>
 
                 <div className="mt-3">
-                  <label className="mb-2 block text-[13px] font-semibold text-zinc-700">
+                 <label className="mb-2 block text-[13px] font-semibold text-black">
   Select City / Region
 </label>
 
@@ -304,7 +438,8 @@ const filteredAreas =
   <option>Peshawar</option>
 </select>
 
-<label className="mb-2 block text-[13px] font-semibold text-zinc-700">
+
+  <label className="mb-2 block text-[13px] font-semibold text-black">
   Search Area / Sub Region
 </label>
 
@@ -321,11 +456,11 @@ const filteredAreas =
     onFocus={() =>
       setShowAreas(true)
     }
-    className="h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-zinc-900 text-[15px] outline-none focus:border-orange-500"
+    className="h-[42px] w-full rounded-xl border border-zinc-300 bg-white px-4 text-black placeholder:text-black text-[15px] outline-none focus:border-orange-500"
   />
 
   {showAreas && (
-    <div className="absolute z-50 mt-1 w-full max-h-60 overflow-y-auto rounded-xl border border-zinc-200 bg-white shadow-lg">
+   <div className="absolute left-0 top-full z-[99999] mt-1 w-full max-h-48 overflow-y-auto rounded-xl border border-zinc-200 bg-white shadow-xl">
 
       {filteredAreas.map((item) => (
 
@@ -337,11 +472,11 @@ const filteredAreas =
             setSearchArea(item);
             setShowAreas(false);
           }}
-          className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-orange-50"
+         className="flex w-full items-center justify-between px-4 py-3 text-left text-black hover:bg-orange-50"
         >
           <span>{item}</span>
 
-         <span className="text-xs text-zinc-400">
+         <span className="text-xs text-black font-medium">
   {areaETA[item] || "30-45 min"}
 </span>
 

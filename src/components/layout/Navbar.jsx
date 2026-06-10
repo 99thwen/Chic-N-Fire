@@ -64,16 +64,7 @@ export default function Navbar() {
 
             </div>
 
-            <div className="hidden lg:flex items-center">
-
-              <a
-                href="/login"
-                className="border border-[#FFD400] text-zinc-900 hover:bg-[#FFD400] px-7 py-3 rounded-full font-semibold transition"
-              >
-                Sign In / Register
-              </a>
-
-            </div>
+            
 
             <button
               onClick={() =>
