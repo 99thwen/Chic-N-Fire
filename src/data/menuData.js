@@ -1058,7 +1058,16 @@ variations: [
   price: 330,
    available: true,
   image: "/foods/wings1.webp",
-  variations: ["5 Pieces", "10 Pieces"],
+  variations: [
+  {
+    name: "5 Pieces",
+    price: 400,
+  },
+  {
+    name: "10 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 87,
@@ -1069,7 +1078,16 @@ variations: [
   
   image: "/foods/mayowings.webp",
    available: true,
-  variations: ["5 Pieces", "10 Pieces"],
+ variations: [
+  {
+    name: "5 Pieces",
+    price: 400,
+  },
+  {
+    name: "10 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 88,
@@ -1079,7 +1097,16 @@ variations: [
   price: 450,
   image: "/foods/wings3.webp",
    available: true,
-  variations: ["5 Pieces", "10 Pieces"],
+ variations: [
+  {
+    name: "5 Pieces",
+    price: 400,
+  },
+  {
+    name: "10 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 89,
@@ -1089,7 +1116,16 @@ variations: [
   price: 380,
   image: "/foods/wings4.webp",
    available: true,
-  variations: ["5 Pieces", "10 Pieces"],
+  variations: [
+  {
+    name: "5 Pieces",
+    price: 400,
+  },
+  {
+    name: "10 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 90,
@@ -1099,7 +1135,16 @@ variations: [
   price: 400,
   image: "/foods/wings.webp",
    available: true,
-  variations: ["5 Pieces", "10 Pieces" ],
+ variations: [
+  {
+    name: "5 Pieces",
+    price: 400,
+  },
+  {
+    name: "10 Pieces",
+    price: 750,
+  },
+]
   
 },
 {
