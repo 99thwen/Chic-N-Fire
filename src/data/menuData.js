@@ -1185,7 +1185,16 @@ variations: [
   price: 350,
   image: "/foods/nuggets.webp",
    available: true,
-  variations: ["6 Pieces", "12 Pieces"],
+ variations: [
+  {
+    name: "6 Pieces",
+    price: 400,
+  },
+  {
+    name: "12 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 95,
@@ -1195,7 +1204,16 @@ variations: [
   price: 400,
   image: "/foods/mayonuggets.webp",
    available: true,
-  variations: ["6 Pieces", "12 Pieces"],
+variations: [
+  {
+    name: "6 Pieces",
+    price: 400,
+  },
+  {
+    name: "12 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 96,
@@ -1205,7 +1223,16 @@ variations: [
   price: 450,
   image: "/foods/wings.webp",
    available: true,
-  variations: ["6 Pieces", "12 Pieces"],
+  variations: [
+  {
+    name: "6 Pieces",
+    price: 400,
+  },
+  {
+    name: "12 Pieces",
+    price: 750,
+  },
+]
 },
 {
   id: 97,
