@@ -45,11 +45,15 @@ const [formData, setFormData] = useState({
     0
   );
 const router = useRouter();
+
+
 useEffect(() => {
+  if (success) return;
+
   if (cartItems.length === 0) {
     router.push("/");
   }
-}, [cartItems]);
+}, [cartItems, success]);
 
   if (success) {
 

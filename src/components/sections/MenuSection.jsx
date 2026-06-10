@@ -216,12 +216,16 @@ console.log(items);
           </div>
         ) : (
           categories.map((category) => {
-            const categoryItems =
-              filteredMenu.filter(
-                (product) =>
-                  product.category ===
-                  category
-              );
+            const categoryItems = filteredMenu
+  .filter(
+    (product) =>
+      product.category === category
+  )
+  .sort(
+    (a, b) =>
+      (a.sortOrder || 999) -
+      (b.sortOrder || 999)
+  );
 
             if (
               categoryItems.length === 0
