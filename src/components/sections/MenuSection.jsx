@@ -86,9 +86,10 @@ const categoryOrder = {
   Seafood: 6,
   Rice: 7,
   Chicken: 8,
-  Savory: 9,
-  Lasagna: 10,
-  Drinks: 11,
+  "Hot Wings": 9,
+  Savory: 10,
+  Lasagna: 11,
+  Drinks: 12,
 };
 
 items.sort((a, b) => {
