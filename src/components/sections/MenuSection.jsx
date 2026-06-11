@@ -24,6 +24,7 @@ const categories = [
   "Burgers",
   "Wraps & Rolls",
   "Curley Fries",
+  "Hot Wings",
   "Seafood",
   "Rice",
   "Chicken",
