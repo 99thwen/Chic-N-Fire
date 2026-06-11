@@ -1,7 +1,5 @@
 "use client";
-
 import { menuData } from "../../data/menuData";
-
 import { db } from "../../lib/firebase";
 
 import {
@@ -11,11 +9,12 @@ import {
 } from "firebase/firestore";
 
 export default function UploadMenu() {
-const uploadMenu = async () => {
 
-  console.log("BUTTON CLICKED");
+  const uploadMenu = async () => {
 
-  try { 
+    console.log("BUTTON CLICKED");
+
+    try {
 
       for (const item of menuData) {
 
@@ -31,28 +30,25 @@ const uploadMenu = async () => {
 
       }
 
-      alert("Menu uploaded successfully!");
+      alert("Menu Uploaded Successfully");
 
     } catch (error) {
 
       console.error(error);
-
-      alert("Upload failed");
+      alert("Upload Failed");
 
     }
 
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-
+    <div className="p-10">
       <button
         onClick={uploadMenu}
-        className="bg-green-500 text-white px-6 py-4 rounded-xl"
+        className="bg-green-600 text-white px-6 py-3 rounded"
       >
-        Upload Menu To Firestore
+        Upload Menu
       </button>
-
     </div>
   );
 }

@@ -73,12 +73,15 @@ useEffect(() => {
     };
   }, [item]);
 
+
   if (!item) return null;
+  console.log(item.title, item.variations);
+
 const variationPrice =
   selectedVariation?.price ||
   item.price ||
   0;
-
+console.log(selectedVariation);
 const unitPrice = variationPrice;
 
 const totalPrice =
@@ -175,33 +178,50 @@ return (
 
       </button>
 
-      {showVariations && (
-        <div className="border-t">
+  {showVariations && (
+  <div className="border-t">
 
-          {item.variations.map(
-            (variation) => (
-              <button
-                key={variation.name}
-                onClick={() => {
-                  setSelectedVariation(
-                    variation
-                  );
-                  setShowVariations(false);
-                }}
-                className={`w-full text-left px-4 py-4 hover:bg-zinc-50 ${
-                  selectedVariation?.name === variation.name
-                    ? "bg-zinc-100 font-semibold"
-                    : ""
-                }`}
-              >
-                {variation.name} - Rs {variation.price}
-              </button>
-            )
-          )}
+    {item.variations.map((variation, index) => {
+      const isObject =
+        typeof variation === "object";
 
-        </div>
-      )}
+      return (
+        <button
+          key={
+            isObject
+              ? `${variation.name}-${index}`
+              : `${variation}-${index}`
+          }
+          onClick={() => {
+            setSelectedVariation(
+              isObject
+                ? variation
+                : {
+                    name: variation,
+                    price: item.price,
+                  }
+            );
 
+            setShowVariations(false);
+          }}
+          className={`w-full text-left px-4 py-4 hover:bg-zinc-50 ${
+            selectedVariation?.name ===
+            (isObject
+              ? variation.name
+              : variation)
+              ? "bg-zinc-100 font-semibold"
+              : ""
+          }`}
+        >
+          {isObject
+            ? `${variation.name} - Rs ${variation.price}`
+            : variation}
+        </button>
+      );
+    })}
+
+  </div>
+)}
     </div>
 
   </div>

@@ -22,7 +22,13 @@ const categories = [
   "Deals",
   "Pizza",
   "Burgers",
-  "Starters",
+  "Wraps & Rolls",
+  "Curley Fries",
+  "Seafood",
+  "Rice",
+  "Chicken",
+  "Lasagna",
+  "Savory",
   "Drinks",
 ];
 
@@ -65,12 +71,40 @@ useEffect(() => {
       collection(db, "menu"),
       (snapshot) => {
 
-        const items =
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
+       const items =
+  snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+const categoryOrder = {
+  Deals: 1,
+  Burgers: 2,
+  Pizza: 3,
+  "Wraps & Rolls": 4,
+  "Curley Fries": 5,
+  Seafood: 6,
+  Rice: 7,
+  Chicken: 8,
+  Savory: 9,
+  Lasagna: 10,
+  Drinks: 11,
+};
+
+items.sort((a, b) => {
+  const categoryDiff =
+    categoryOrder[a.category] -
+    categoryOrder[b.category];
+
+  if (categoryDiff !== 0) return categoryDiff;
+
+  return (a.order || 999) - (b.order || 999);
+});
+console.log(items);
+console.log(
+  [...new Set(items.map(item => item.category))]
+); 
 setMenu(items);
+
 setMenuLoaded(true);
 
 console.log(items);
