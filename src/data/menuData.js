@@ -1109,7 +1109,7 @@ variations: [
   category: "Hot Wings",
   title: "Hot Wings",
    description: "Crispy chicken wings tossed in a bold spicy seasoning.",
-  price: 330,
+  price: 300,
    available: true,
    order: 20, 
   image: "/foods/wings1.webp",
