@@ -1235,17 +1235,7 @@ description: "6 tender chicken strips coated in a crispy golden crust, served wi
 ]
   
 },
-{
-  id: 92,
-  category: "Chicken",
-  title: "Steam Chicken Piece (1 PC)",
-   description: "Tender steamed chicken prepared with light seasoning.",
-  price: 260,
-   available: true,
-   order: 19,
-  image: "/foods/steamed.webp",
- 
-},
+
 
 {
   id: 94,
@@ -1293,7 +1283,7 @@ variations: [
   title: "Cheese Mayo Nuggets",
   description: "Chicken nuggets coated with rich cheese mayo sauce.",
   price: 320,
-  image: "/foods/wings.webp",
+  image: "/foods/nuggets.webp",
    available: true,
    order: 27, 
 variations: [
@@ -1609,5 +1599,16 @@ category: "Lasagna",
   image: "/foods/famfries.webp",
   available: true,
   order: 6,
+},
+{
+  id: 92,
+  category: "Chicken",
+  title: "Steam Chicken Piece (1 PC)",
+   description: "Tender steamed chicken prepared with light seasoning.",
+  price: 260,
+   available: true,
+   order: 19,
+  image: "/foods/steamed.webp",
+ 
 },
 ];

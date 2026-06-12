@@ -284,7 +284,7 @@ console.log(items);
                   {categoryItems.map(
                     (product) => (
                       <FoodCard
-                        key={product.id}
+key={`${product.category}-${product.id}`}
                         product={product}
                         onCustomize={() =>
                           setSelectedItem(
