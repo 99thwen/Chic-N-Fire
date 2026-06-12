@@ -21,7 +21,7 @@ import {
 } from "react";
 
 import { useRouter } from "next/navigation";
-
+import { useRef } from "react";
 import {
   db,
   auth,
@@ -38,6 +38,8 @@ export default function AdminPage() {
     useState([]);
 const [menuItems, setMenuItems] =
   useState([]);
+const previousOrderCount = useRef(0);
+const firstLoad = useRef(true);
 
   const logout = async () => {
 
@@ -71,29 +73,58 @@ const [menuItems, setMenuItems] =
 
   }, [router]);
 
-  useEffect(() => {
 
-    const q = query(
-      collection(db, "orders"),
-      orderBy("createdAt", "desc")
-    );
 
-    const unsubscribe =
-      onSnapshot(q, (snapshot) => {
 
-        const ordersData =
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
+useEffect(() => {
 
-        setOrders(ordersData);
+  const audio = new Audio(
+    "/sounds/new-order.mp3"
+  );
 
-      });
+  const q = query(
+    collection(db, "orders"),
+    orderBy("createdAt", "desc")
+  );
 
-    return () => unsubscribe();
+  const unsubscribe =
+    onSnapshot(q, (snapshot) => {
 
-  }, []);
+      const ordersData =
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+      if (firstLoad.current) {
+
+        previousOrderCount.current =
+          ordersData.length;
+
+        firstLoad.current = false;
+
+      } else if (
+        ordersData.length >
+        previousOrderCount.current
+      ) {
+
+        audio.play().catch(() => {});
+
+        previousOrderCount.current =
+          ordersData.length;
+
+      }
+
+      setOrders(ordersData);
+
+    });
+
+  return () => unsubscribe();
+
+}, []);
+
+
+
 useEffect(() => {
 
   const unsubscribe =

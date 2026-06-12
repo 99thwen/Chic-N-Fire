@@ -22,27 +22,51 @@ export default function Footer() {
 
               <div className="space-y-3 text-zinc-600">
 
-                <p>
-                  <span className="font-semibold text-zinc-900">
-                    Phone:
-                  </span>{" "}
-                  <a
-  href="tel:+923335823184"
-  className="hover:text-orange-500 transition"
->
-  +92 333 5823184
-</a>
-                </p>
+               <div>
+  <span className="font-semibold text-zinc-900">
+    Phone:
+  </span>
+
+  <div className="flex flex-col mt-1">
+    <a
+      href="tel:0915823184"
+      className="hover:text-orange-500 transition"
+    >
+      091-5823184
+    </a>
+
+    <a
+      href="tel:0915823183"
+      className="hover:text-orange-500 transition"
+    >
+      091-5823183
+    </a>
+
+    <a
+      href="tel:03335823184"
+      className="hover:text-orange-500 transition"
+    >
+      0333-5823184
+    </a>
+
+    <a
+      href="tel:03348929476"
+      className="hover:text-orange-500 transition"
+    >
+      0334-8929476
+    </a>
+  </div>
+</div>
 
                 <p>
                   <span className="font-semibold text-zinc-900">
                     Email:
                   </span>{" "}
                   <a
-  href="mailto:info@chicnfire.com"
+  href="mailto:chick.n.fire110@gmail.com "
   className="hover:text-orange-500 transition"
 >
-  info@chicnfire.com
+  chick.n.fire110@gmail.com 
 </a>
                 </p>
 
@@ -69,8 +93,7 @@ export default function Footer() {
 
 <div className="space-y-2 text-zinc-600 text-sm md:text-base">
               <p>Monday - Sunday</p>
-
-              <p>11:00 AM - 02:00 AM</p>
+              <p>Open 24 Hours</p>
 
             </div>
 <div className="flex flex-wrap justify-center gap-4">
