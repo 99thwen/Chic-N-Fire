@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/react";
 import { CartProvider } from "../context/CartContext";
 import { FavoritesProvider } from "../context/FavoritesContext";
 
@@ -39,6 +39,7 @@ export default function RootLayout({
             {children}
           </FavoritesProvider>
         </CartProvider>
+        <Analytics />
       </body>
     </html>
   );
