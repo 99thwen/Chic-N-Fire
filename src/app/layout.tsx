@@ -60,6 +60,43 @@ export default function RootLayout({
         </CartProvider>
         <Analytics />
       <SpeedInsights />
+
+
+
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      name: "Chick n Fire",
+      image: "https://www.chicknfire.pk/logo.webp",
+      url: "https://www.chicknfire.pk",
+      telephone: "+92-3215823184"    ,
+      servesCuisine: [
+  "Fast Food",
+  "Pizza",
+  "Burgers",
+  "Fried Chicken", 
+  "Wraps",
+  "Seafood",
+  "Paratha Rolls",
+  "Fried Items",
+  "Drinks"
+],
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "5-A, Block A, Yousafzai Market Phase 3, Hayatabad",
+        addressLocality: "Peshawar",
+        addressCountry: "PK",
+      },
+      openingHours: "Mo-Su 00:00-23:59",
+    }),
+  }}
+/>
+
       </body>
     </html>
   );
