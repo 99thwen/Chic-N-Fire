@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.chicknfire.pk"),
 
   title: {
-    default: "Chick n Fire | Yummy Fast Food Deals & Pizza in Cheap prices in Peshawar, Hayatabad.",
+    default: "Chick n Fire",
     template: "%s | Chick n Fire",
   },
 

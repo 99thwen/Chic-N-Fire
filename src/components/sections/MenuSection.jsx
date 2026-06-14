@@ -50,22 +50,16 @@ const [menuLoaded, setMenuLoaded] =
 
 
   const searchRef = useRef(null);
-      const filteredMenu = useMemo(() => {
+const filteredMenu = useMemo(() => {
   return menu.filter(
     (product) =>
-      `${product.title} ${
-        product.description || ""
-      }`
+      `${product.title} ${product.description || ""}`
         .toLowerCase()
-        .includes(
-          searchQuery.toLowerCase()
-        )
+        .includes(searchQuery.toLowerCase())
   );
 }, [menu, searchQuery]);
+const hasResults = filteredMenu.length > 0;
 
-
-  const hasResults =
-    filteredMenu.length > 0;
 useEffect(() => {
 
   const startTime = performance.now();
@@ -86,7 +80,6 @@ useEffect(() => {
             id: doc.id,
             ...doc.data(),
           }));
-  console.timeEnd("menu-load");
 const categoryOrder = {
   Deals: 1,
   Burgers: 2,
@@ -111,8 +104,14 @@ items.sort((a, b) => {
   if (categoryDiff !== 0) return categoryDiff;
 
   return (a.order || 999) - (b.order || 999);
-});   }
-    );
+});
+
+setMenu(items);
+setMenuLoaded(true);
+console.log("Items loaded:", items.length);
+
+      }   // closes (snapshot) => {
+    );     // closes onSnapshot()
 
   return () => unsubscribe();
 
@@ -280,7 +279,7 @@ items.sort((a, b) => {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {categoryItems.slice(0, 3).map(
+                  {categoryItems.map(
                     (product) => (
                       <FoodCard
 key={`${product.category}-${product.id}`}
@@ -335,7 +334,8 @@ key={`${product.category}-${product.id}`}
         <ProductModal
           item={selectedItem}
           onClose={() =>
-            setSelectedItem(null)
+ 
+    setSelectedItem(null)
           }
         />
       )}
