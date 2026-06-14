@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   description:
     "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings, Wraps, Seafood  and Drinks online from Chick n Fire.",
 
+  verification: {
+    google: "IXhAifbxz2dYEFxkrJUmGctZHPUAogo3sjSIz_8iWXo",
+  },
   alternates: {
     canonical: "/",
   },
