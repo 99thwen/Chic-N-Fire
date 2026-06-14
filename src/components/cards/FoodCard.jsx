@@ -35,6 +35,7 @@ const displayPrice =
     alt={product.title}
     fill
     sizes="200px"
+    loading="lazy"
     className={`object-contain p-2 ${
       !product.available ? "opacity-50" : ""
     }`}

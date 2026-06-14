@@ -68,16 +68,25 @@ const [menuLoaded, setMenuLoaded] =
     filteredMenu.length > 0;
 useEffect(() => {
 
+  const startTime = performance.now();
+
   const unsubscribe =
     onSnapshot(
       collection(db, "menu"),
       (snapshot) => {
 
-       const items =
-  snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+        console.log(
+          "Firestore load:",
+          Math.round(performance.now() - startTime),
+          "ms"
+        );
+
+        const items =
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+  console.timeEnd("menu-load");
 const categoryOrder = {
   Deals: 1,
   Burgers: 2,
@@ -102,17 +111,7 @@ items.sort((a, b) => {
   if (categoryDiff !== 0) return categoryDiff;
 
   return (a.order || 999) - (b.order || 999);
-});
-console.log(items);
-console.log(
-  [...new Set(items.map(item => item.category))]
-); 
-setMenu(items);
-
-setMenuLoaded(true);
-
-console.log(items);
-      }
+});   }
     );
 
   return () => unsubscribe();

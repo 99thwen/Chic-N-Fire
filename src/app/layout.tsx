@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "../context/CartContext";
 import { FavoritesProvider } from "../context/FavoritesContext";
 
@@ -12,13 +13,31 @@ const poppins = Poppins({
   display: "swap",
 });
 
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.chicknfire.pk"),
+
   title: {
-    default: "Chick n Fire",
+    default: "Chick n Fire | Yummy Fast Food Deals & Pizza in Cheap prices in Peshawar, Hayatabad.",
     template: "%s | Chick n Fire",
   },
+
   description:
-    "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings and Drinks online from Chick n Fire.",
+    "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings, Wraps, Seafood  and Drinks online from Chick n Fire.",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "Chick n Fire | Fast Food, Pizza & Burgers in Peshawar",
+    description:
+      "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings and Drinks online from Chick n Fire.",
+    url: "https://www.chicknfire.pk",
+    siteName: "Chick n Fire",
+    locale: "en_PK",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -40,6 +59,7 @@ export default function RootLayout({
           </FavoritesProvider>
         </CartProvider>
         <Analytics />
+      <SpeedInsights />
       </body>
     </html>
   );
