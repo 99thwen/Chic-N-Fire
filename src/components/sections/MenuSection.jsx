@@ -117,58 +117,62 @@ console.log("Items loaded:", items.length);
 
 }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      for (const category of categories) {
-        const section =
-          document.getElementById(category);
+useEffect(() => {
+  const handleScroll = () => {
+    let closestCategory = null;
+    let closestDistance = Infinity;
 
-        if (!section) continue;
+    categories.forEach((category) => {
+      const section =
+        document.getElementById(category);
 
-        const rect =
-          section.getBoundingClientRect();
+      if (!section) return;
 
-        if (
-          rect.top <= 180 &&
-          rect.bottom >= 180
-        ) {
-          setActiveCategory(category);
+      const distance = Math.abs(
+        section.getBoundingClientRect().top - 220
+      );
 
-          document
-            .getElementById(
-              `tab-${category}`
-            )
-            ?.scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-              block: "nearest",
-            });
-
-          break;
-        }
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCategory = category;
       }
-    };
+    });
 
-    handleScroll();
+    if (closestCategory) {
+      setActiveCategory(closestCategory);
 
-    window.addEventListener(
+      document
+        .getElementById(
+          `tab-${closestCategory}`
+        )
+        ?.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+    }
+  };
+
+  handleScroll();
+
+  window.addEventListener(
+    "scroll",
+    handleScroll
+  );
+
+  return () =>
+    window.removeEventListener(
       "scroll",
       handleScroll
     );
-
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-  }, []);
+}, []);
 
   return (
     <div className="bg-zinc-100 text-zinc-900 min-h-screen">
       {/* Category Tabs */}
       <div className="sticky top-[80px] z-40 bg-zinc-100 pt-4">
-        <div className="max-w-7xl mx-auto px-4 overflow-x-auto bg-white rounded-2xl border border-zinc-200 shadow-sm">
-          <div className="flex gap-2 py-3 min-w-max">
+          <div className="max-w-7xl mx-auto px-4 overflow-x-hidden scrollbar-hide bg-white rounded-2xl border border-zinc-200 shadow-sm">
+            <div className="flex gap-2 py-3 min-w-max scrollbar-hide">
             {categories.map(
               (category) => (
                 <button
@@ -238,8 +242,20 @@ console.log("Items loaded:", items.length);
       </div>
 
       {/* Products */}
-      <div className="max-w-7xl mx-auto px-4 pt-8 pb-4">
-        {menuLoaded && !hasResults ? (
+      {/* Products */}
+<div className="max-w-7xl mx-auto px-4 pt-8 pb-4">
+
+  {!menuLoaded ? (
+    <div className="flex flex-col items-center justify-center py-24">
+  
+      <p className="mt-4 text-lg font-semibold text-zinc-700">
+        Loading....
+      </p>
+
+      <div className="mt-4 h-10 w-10 border-4 border-[#FFD400] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  ) : (
+    menuLoaded && !hasResults ? (
           <div className="py-20 text-center">
             <h2 className="text-3xl font-bold text-zinc-900">
               No Products Found
@@ -295,20 +311,31 @@ key={`${product.category}-${product.id}`}
                 </div>
               </section>
             );
-          })
-        )}
-      </div>
+
+          })   
+
+                  
+        )
+      )}
+
+</div>
 
       {/* Mobile Search Button */}
       <button
-        onClick={() =>
-          searchRef.current?.scrollIntoView(
-            {
-              behavior: "smooth",
-              block: "start",
-            }
-          )
-        }
+      aria-label="Search Menu"
+  title="Search Menu"
+       onClick={() => {
+  searchRef.current?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+
+  setTimeout(() => {
+    searchRef.current
+      ?.querySelector("input")
+      ?.focus();
+  }, 500);
+}}
         className="
           fixed
           bottom-24
@@ -319,7 +346,6 @@ key={`${product.category}-${product.id}`}
           bg-[#FFD400]
           text-black
           z-50
-          md:hidden
           flex
           items-center
           justify-center

@@ -32,12 +32,14 @@ export default function Navbar() {
 
             <a href="/">
               <Image
-                src="/logo.webp"
-                alt="Chick N Fire"
-                width={190}
-                height={190}
-                className="w-auto h-auto"
-              />
+  src="/logo.webp"
+  alt="Chick N Fire"
+  width={190}
+  height={190}
+  priority
+  className="w-auto h-auto"
+/>
+            
             </a>
 
             <div className="hidden lg:flex items-center gap-10 text-zinc-700 font-semibold">
@@ -145,13 +147,6 @@ export default function Navbar() {
                 {item}
               </a>
             ))}
-
-            <a
-              href="/login"
-              className="mt-10 border border-[#FFD400] text-zinc-900 py-4 rounded-2xl font-semibold hover:bg-[#FFD400] transition text-center"
-            >
-              Sign In / Register
-            </a>
 
           </div>
 

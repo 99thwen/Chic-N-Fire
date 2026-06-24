@@ -17,9 +17,13 @@ export default function TermsPage() {
   {/* white card */}
   <div className="bg-white rounded-[32px] border border-zinc-200 p-8 md:p-12">
 
-    <h1>Terms & Conditions</h1>
+    <h1 className="text-4xl font-bold text-black mb-4">
+  Terms & Conditions
+</h1>
 
-    <p>Last Updated: June 2026</p>
+   <p className="text-zinc-500 mb-8">
+  Last Updated: June 2026
+</p>
 
         <div className="space-y-8 text-zinc-700">
 

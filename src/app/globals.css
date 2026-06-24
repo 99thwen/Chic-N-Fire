@@ -60,3 +60,11 @@ textarea:-webkit-autofill {
 .animate-scaleIn {
   animation: scaleIn 0.25s ease;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} 

@@ -352,7 +352,8 @@ const filteredAreas =
                 className={`h-8 min-w-[86px] rounded-full px-5 text-sm font-semibold transition-all duration-300 ${
                   deliveryType === "delivery"
                     ? "bg-orange-500 text-white scale-105 shadow-md"
-                    : "border border-zinc-300 bg-white text-zinc-600 hover:bg-zinc-50"
+                
+                    : "border border-zinc-300 bg-white text-black hover:bg-zinc-50"
                 }`}
               >
                 Delivery
@@ -366,7 +367,7 @@ const filteredAreas =
                 className={`h-8 min-w-[86px] rounded-full px-5 text-sm font-semibold transition-all duration-300 ${
                   deliveryType === "pickup"
                     ? "bg-orange-500 text-white scale-105 shadow-md"
-                    : "border border-zinc-300 bg-white text-zinc-600 hover:bg-zinc-50"
+                    : "border border-zinc-300 bg-white text-black hover:bg-zinc-50"
                 }`}
               >
                 Pick-Up
@@ -422,11 +423,14 @@ const filteredAreas =
                 </div>
 
                 <div className="mt-3">
-                 <label className="mb-2 block text-[13px] font-semibold text-black">
-  Select City / Region
-</label>
 
+                 <label 
+                  htmlFor="city-select"
+                 className="mb-2 block text-[13px] font-semibold text-black">
+                Select City / Region
+              </label>
 <select
+ id="city-select"
   value={city}
   onChange={(e) => {
     setCity(e.target.value);

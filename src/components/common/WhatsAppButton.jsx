@@ -11,6 +11,8 @@ export default function WhatsAppButton() {
       href="https://wa.me/923215823184"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Chat on WhatsApp"
+       title="Chat on WhatsApp"
       className={`
         fixed
         bottom-41

@@ -63,20 +63,26 @@ export default function Footer() {
                     Email:
                   </span>{" "}
                   <a
-  href="mailto:chick.n.fire110@gmail.com "
+  href="mailto:chick.n.fire110@gmail.com"
   className="hover:text-orange-500 transition"
 >
   chick.n.fire110@gmail.com 
 </a>
                 </p>
 
-                <p>
-                  <span className="font-semibold text-zinc-900">
-                    Address:
-                  </span>{" "}
-                  5-A, Block A, Yousafzai Market Phase 3,
-                  Hayatabad, Peshawar
-                </p>
+               <p>
+  <span className="font-semibold text-zinc-900">
+    Address:
+  </span>{" "}
+  <a
+    href="https://maps.google.com/?q=5-A+Block+A+Yousafzai+Market+Phase+3+Hayatabad+Peshawar"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-orange-500 transition"
+  >
+    5-A, Block A, Yousafzai Market Phase 3, Hayatabad, Peshawar
+  </a>
+</p>
 
               </div>
 
@@ -93,7 +99,7 @@ export default function Footer() {
 
 <div className="space-y-2 text-zinc-600 text-sm md:text-base">
               <p>Monday - Sunday</p>
-              <p>Open 24 Hours</p>
+              <p>Open 24 Hours Delivery & Pickup</p>
 
             </div>
 <div className="flex flex-wrap justify-center gap-4">
