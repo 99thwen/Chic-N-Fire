@@ -128,13 +128,8 @@ export default function Footer() {
 
   © {new Date().getFullYear()} Chick N Fire. All Rights Reserved. ·{" "}
 
-  <a
-    href="https://wa.me/923336536648"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-[#FFD400] transition"
-  >
-    Developed by Studio S
+  <a >
+    Developed by Studio MS
   </a>
 
 </div>
