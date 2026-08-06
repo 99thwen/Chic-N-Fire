@@ -28,19 +28,41 @@ export const metadata: Metadata = {
   verification: {
     google: "IXhAifbxz2dYEFxkrJUmGctZHPUAogo3sjSIz_8iWXo",
   },
+robots: {
+  index: true,
+  follow: true,
+  googleBot: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+},
+  
   alternates: {
     canonical: "/",
   },
+openGraph: {
+  title: "Chick n Fire | Fast Food, Pizza & Burgers in Peshawar",
+  description:
+    "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings and Drinks online from Chick n Fire.",
+  url: "https://www.chicknfire.pk",
+  siteName: "Chick n Fire",
 
-  openGraph: {
-    title: "Chick n Fire | Fast Food, Pizza & Burgers in Peshawar",
-    description:
-      "Premium Fast Food in Peshawar. Order Pizza, Burgers, Deals, Wings and Drinks online from Chick n Fire.",
-    url: "https://www.chicknfire.pk",
-    siteName: "Chick n Fire",
-    locale: "en_PK",
-    type: "website",
-  },
+  images: [
+    {
+      url: "/logo.webp",
+      width: 1200,
+      height: 630,
+      alt: "Chick n Fire",
+    },
+  ],
+
+  locale: "en_PK",
+  type: "website",
+},
+ 
 };
 
 export default function RootLayout({

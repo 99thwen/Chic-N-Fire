@@ -17,7 +17,7 @@ import {
 
 import FoodCard from "../cards/FoodCard";
 import ProductModal from "../modals/ProductModal";
-
+import SkeletonCard from "../cards/SkeletonCard";
 const categories = [
   "Deals",
   "Pizza",
@@ -246,14 +246,12 @@ useEffect(() => {
 <div className="max-w-7xl mx-auto px-4 pt-8 pb-4">
 
   {!menuLoaded ? (
-    <div className="flex flex-col items-center justify-center py-24">
-  
-      <p className="mt-4 text-lg font-semibold text-zinc-700">
-        Loading....
-      </p>
 
-      <div className="mt-4 h-10 w-10 border-4 border-[#FFD400] border-t-transparent rounded-full animate-spin"></div>
-    </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+  {Array.from({ length: 9 }).map((_, index) => (
+    <SkeletonCard key={index} />
+  ))}
+</div>
   ) : (
     menuLoaded && !hasResults ? (
           <div className="py-20 text-center">
