@@ -97,7 +97,7 @@ export default function RootLayout({
       name: "Chick n Fire",
       image: "https://www.chicknfire.pk/logo.webp",
       url: "https://www.chicknfire.pk",
-      telephone: "+92-3215823184"    ,
+      telephone: "+92-3348929476"    ,
       servesCuisine: [
   "Fast Food",
   "Pizza",
